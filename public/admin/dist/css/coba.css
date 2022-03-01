@@ -1,0 +1,12 @@
+.text-light{
+      color: white;
+}
+
+.nav-link:hover{
+      color: black; 
+      background-color: white;
+}
+
+.text-light:hover{
+      color: black;
+}
