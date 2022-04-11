@@ -16,20 +16,17 @@ class CreateJobOrdersTable extends Migration
         Schema::create('job_orders', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            $table->time('jam');
             $table->string('customer');
             $table->string('jenis_order');
             $table->text('size');
-            $table->integer('barang_id')->unsigned();
+            $table->unsignedBigInteger('barangs_id');
             $table->text('pages');
             $table->text('color');
-            $table->integer('qty', 3);
-            $table->string('atented');
+            $table->integer('qty');
+            $table->unsignedBigInteger('pegawais_id');
             $table->string('deadline');
             $table->string('sign');
             $table->timestamps();
-
-            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
         });
     }
 

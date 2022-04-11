@@ -20,13 +20,13 @@
                 <div class="col-md-6">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">INPUT BARANG</h3>
+                            <h3 class="card-title">INPUT BARANG MASUK</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="card-body">
                             {{ Form::open([
-                                'action' => "barang.store",
+                                'action' => "barang_store.store",
                                 'method' => 'POST',
                                 'enctype' => "multipart/form-data"
                             ]) }}
@@ -56,12 +56,12 @@
                                 {{ Form::label('qty', 'Items: ', ['class' => 'control-label'], false) }}
                                 {{ Form::text('qty', '', array('class'=>'form-control')) }}
                             </div>
-                            
+
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <a href="{{ route('barang.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                            <a href="{{ route('barang_masuk.index') }}" class="btn btn-secondary btn-sm">Back</a>
                             <button type="submit" class="btn btn-primary float-right">Submit</button>
                         </div>
                         {{ Form::close() }}

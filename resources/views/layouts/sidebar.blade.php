@@ -13,7 +13,7 @@
                 <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2 lg-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-bold text-light">{{auth()->user()->name}}</a>
+                <a href="#" class="d-block text-bold text-light">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -82,6 +82,12 @@
                 <a href="/joborder" class="nav-link text-warning">
                     <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>Job Order</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/joborder" class="nav-link text-warning">
+                    <i class="nav-icon fas fa-receipt"></i>
+                    <p>Invoice</p>
                 </a>
             </li>
             <br>

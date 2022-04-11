@@ -27,6 +27,8 @@ class JobOrderController extends Controller
     public function create()
     {
         //
+        $judul = array('title' => 'Job Order');
+        return view('joborder.create', $judul);
     }
 
     /**

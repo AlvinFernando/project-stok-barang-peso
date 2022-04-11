@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BarangMasuk;
+use App\Barang;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -15,6 +16,11 @@ class BarangMasukController extends Controller
     public function index()
     {
         //
+        $title = "Data Barang Masuk";
+        $judul = array('title' => 'Data Barang Masuk');
+        $barangmasuks = BarangMasuk::paginate(10);
+        $barangs = Barang::all();
+        return view('barang_masuk.index', compact('judul', 'barangmasuks', 'title', 'barangs'));
     }
 
     /**
@@ -25,6 +31,10 @@ class BarangMasukController extends Controller
     public function create()
     {
         //
+        $judul = array('title' => 'Data Barang Masuk');
+        $title = "Input Barang Masuk";
+        $barangs = Barang::all();
+        return view('barang_masuk.create', compact('judul', 'title', 'barangs'));
     }
 
     /**

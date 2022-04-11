@@ -41,7 +41,7 @@
                                                                               <th>Action</th>
                                                                         </tr>
                                                                   </thead>
-                                                                  <tbody> 
+                                                                  <tbody>
                                                                         <tr>
                                                                               <td>1</td>
                                                                               <td>K00001</td>
@@ -78,8 +78,9 @@
                                                                               <td>HVS 80gsm A3 +</td>
                                                                               <td>12</td>
                                                                               <td>
-                                                                                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                                                <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye nav-icon text-light"></i></a>
+                                                                                <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit nav-icon text-light"></i></a>
+                                                                                <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash nav-icon text-light"></i></a>
                                                                               </td>
                                                                         </tr>
                                                                   </tbody>
@@ -117,12 +118,12 @@
                                           </div>
                                     </div>
                                     <!-- /.card-body -->
-                              </div>                               
+                              </div>
                         </div>
                   </div>
                   <!-- /.row -->
 
-                  
+
 
             </div><!--/. container-fluid -->
       </section>

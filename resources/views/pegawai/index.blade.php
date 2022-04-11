@@ -42,7 +42,7 @@
                                                                               <th>Action</th>
                                                                         </tr>
                                                                   </thead>
-                                                                  <tbody> 
+                                                                  <tbody>
                                                                         <tr>
                                                                               <td>1</td>
                                                                               <td>Marito</td>
@@ -61,8 +61,9 @@
                                                                               <td>Timor Leste</td>
                                                                               <td>+671 7877 3876 </td>
                                                                               <td class="text-center">
-                                                                                    <a href="/edit" class="btn btn-warning btn-sm">Edit</a>
-                                                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                                                <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye nav-icon text-light"></i></a>
+                                                                                <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit nav-icon text-light"></i></a>
+                                                                                <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash nav-icon text-light"></i></a>
                                                                               </td>
                                                                         </tr>
                                                                   </tbody>
@@ -100,12 +101,12 @@
                                           </div>
                                     </div>
                                     <!-- /.card-body -->
-                              </div>                               
+                              </div>
                         </div>
                   </div>
                   <!-- /.row -->
 
-                  
+
 
             </div><!--/. container-fluid -->
       </section>

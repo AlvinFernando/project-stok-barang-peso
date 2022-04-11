@@ -8,7 +8,7 @@
             <!-- Google Font: Source Sans Pro -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;1,300&display=swap" rel="stylesheet">
             <!-- Font Awesome Icons -->
             <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
             <!-- overlayScrollbars -->
@@ -16,6 +16,11 @@
             <!-- Theme style -->
             <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
             <link rel="stylesheet" href="{{ asset('admin/dist/css/coba.css') }}">
+            <style>
+                *{
+                    font-family: 'Kanit', sans-serif;
+                }
+            </style>
       </head>
       <body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
             <div class="wrapper">
@@ -24,7 +29,7 @@
                   <div class="preloader flex-column justify-content-center align-items-center">
                         <img class="animation__wobble" src="{{ asset('admin/dist/img/LOGO PESO VECTOR.png') }}" alt="peso" height="100" width="350">
                   </div>
-                  
+
                         @include('layouts.navbar')
                         @include('layouts.sidebar')
 

@@ -15,8 +15,10 @@ class BarangController extends Controller
     public function index()
     {
         //
+        $title = "Data Barang";
         $judul = array('title' => 'Data Barang');
-        return view('barang.index', $judul);
+        $barangs = Barang::paginate(10);
+        return view('barang.index', compact('judul', 'barangs', 'title'));
     }
 
     /**
@@ -28,7 +30,8 @@ class BarangController extends Controller
     {
         //
         $judul = array('title' => 'Data Barang');
-        return view('barang.create', $judul);
+        $title = "Tambah Data Barang";
+        return view('barang.create', compact('judul', 'title'));
     }
 
     /**
@@ -40,6 +43,21 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        $this->validate($request , [
+            'kode_barang' => 'required',
+            'item_description' => 'required',
+            'unit' => 'required',
+        ]);
+
+        Barang::create([
+            'kode_barang' => $request->kode_barang,
+            'item_description' => $request->item_description,
+            'unit' => $request->unit,
+            'qty' => $request->qty
+        ]);
+
+        return redirect('barang')->with('success','Data Barang Telah Diinput !!');
     }
 
     /**
@@ -59,9 +77,13 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
         //
+        $judul = array('title' => 'Data Barang');
+        $title = "Tambah Data Barang";
+        $barangs = Barang::findOrFail($id);
+        return view('barang.edit', compact('judul', 'title', 'barangs'));
     }
 
     /**
@@ -74,6 +96,22 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         //
+        $this->validate($request , [
+            'kode_barang' => 'required',
+            'item_description' => 'required',
+            'unit' => 'required',
+        ]);
+
+        $barangs_data = [
+            'kode_barang' => $request->kode_barang,
+            'item_description' => $request->item_description,
+            'unit' => $request->unit,
+            'qty' => $request->qty
+        ];
+
+        $barang->update($barangs_data);
+
+        return redirect()->route('barang.index')->with('success','Data Barang Telah DIUBAH !!');
     }
 
     /**
@@ -82,22 +120,13 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
         //
+        $barangs = Barang::findorfail($id);
+        $barangs->delete();
+
+        return redirect()->back()->with('success','Barang Berhasil Dihapus');
     }
 
-    public function barang_masuk()
-    {
-        //
-        $judul = array('title' => 'Data Barang Masuk');
-        return view('barang_masuk.index', $judul);
-    }
-
-    public function barang_keluar()
-    {
-        //
-        $judul = array('title' => 'Data Barang Keluar');
-        return view('barang_keluar.index', $judul);
-    }
 }

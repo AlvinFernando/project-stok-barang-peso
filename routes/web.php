@@ -21,6 +21,6 @@ Route::get('/logout', 'AuthController@logout');
 Route::get('/dashboard', 'DashboardController@index');
 Route::resource('/pegawai', 'PegawaiController');
 Route::resource('/barang', 'BarangController');
-Route::get('/barang_masuk', 'BarangController@barang_masuk');
-Route::get('/barang_keluar', 'BarangController@barang_keluar');
+Route::resource('/barang_masuk', 'BarangMasukController');
+Route::resource('/barang_keluar', 'BarangKeluarController');
 Route::resource('/joborder', 'JobOrderController');

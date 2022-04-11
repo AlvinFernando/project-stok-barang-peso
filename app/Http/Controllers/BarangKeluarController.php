@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pegawai;
+use App\BarangKeluar;
 use Illuminate\Http\Request;
 
-class PegawaiController extends Controller
+class BarangKeluarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,6 @@ class PegawaiController extends Controller
     public function index()
     {
         //
-        $judul = array('title' => 'Manajemen Pegawai');
-        $pegawais = Pegawai::orderBy('updated_at', 'DESC')->paginate(5);
-        return view('pegawai.index', compact('judul', 'pegawais'));
     }
 
     /**
@@ -28,8 +25,6 @@ class PegawaiController extends Controller
     public function create()
     {
         //
-        $judul = array('title' => 'Input Data Pegawai');
-        return view('pegawai.create', $judul);
     }
 
     /**
@@ -46,10 +41,10 @@ class PegawaiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pegawai  $pegawai
+     * @param  \App\BarangKeluar  $barangKeluar
      * @return \Illuminate\Http\Response
      */
-    public function show(Pegawai $pegawai)
+    public function show(BarangKeluar $barangKeluar)
     {
         //
     }
@@ -57,10 +52,10 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pegawai  $pegawai
+     * @param  \App\BarangKeluar  $barangKeluar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pegawai $pegawai)
+    public function edit(BarangKeluar $barangKeluar)
     {
         //
     }
@@ -69,10 +64,10 @@ class PegawaiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pegawai  $pegawai
+     * @param  \App\BarangKeluar  $barangKeluar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request, BarangKeluar $barangKeluar)
     {
         //
     }
@@ -80,10 +75,10 @@ class PegawaiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pegawai  $pegawai
+     * @param  \App\BarangKeluar  $barangKeluar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy(BarangKeluar $barangKeluar)
     {
         //
     }
