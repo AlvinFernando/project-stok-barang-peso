@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\JobOrder;
+use App\Pegawai;
 use Illuminate\Http\Request;
 
 class JobOrderController extends Controller
@@ -15,8 +16,10 @@ class JobOrderController extends Controller
     public function index()
     {
         //
-        $data = array('title' => 'Job Order');
-        return view('joborder.index', $data);
+        $title = "Job Order";
+        $judul = array('title' => 'Job Order');
+        $job_orders = JobOrder::paginate(10);
+        return view('joborder.index', compact('judul', 'job_orders', 'title'));
     }
 
     /**
@@ -28,7 +31,9 @@ class JobOrderController extends Controller
     {
         //
         $judul = array('title' => 'Job Order');
-        return view('joborder.create', $judul);
+        $title = "Tambah Job Orders";
+        $pegawai = Pegawai::all();
+        return view('joborder.create', compact('judul', 'pegawai', 'title'));
     }
 
     /**
@@ -40,6 +45,33 @@ class JobOrderController extends Controller
     public function store(Request $request)
     {
         //
+        $errors = [
+            'required' => ':attribute wajib diisi !',
+            'min' => ':attribute harus diisi dengan minimal :min karakter !',
+            'max' => ':attribute harus diisi dengan maksimal :max karakter !',
+            'numeric' => ':attribute harus diisi angka saja !',
+        ];
+
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'customer' => 'required'
+        ], $errors);
+
+        JobOrder::Create([
+            'tanggal' => $request->tanggal,
+            'customer' => $request->customer,
+            'jenis_order' => $request->jenis_order,
+            'size' => $request->size,
+            'pages' => $request->pages,
+            'color' => $request->color,
+            'qty' => $request->qty,
+            'finishing' => $request->finishing,
+            'pegawais_id' => $request->pegawais_id,
+            'deadline' => $request->deadline,
+            'materials' => $request->materials
+        ]);
+
+        return redirect('joborder')->with('success','Data Job Orders Telah Diinput !!');
     }
 
     /**
@@ -48,9 +80,13 @@ class JobOrderController extends Controller
      * @param  \App\JobOrder  $jobOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(JobOrder $jobOrder)
+    public function show($id)
     {
         //
+        $job_orders = JobOrder::findOrFail($id);
+        $judul = array('title' => 'Data Job Order');
+        $title = "Detail Job Order";
+        return view('joborder.show', compact('job_orders','judul', 'title'));
     }
 
     /**
@@ -59,9 +95,14 @@ class JobOrderController extends Controller
      * @param  \App\JobOrder  $jobOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(JobOrder $jobOrder)
+    public function edit($id)
     {
         //
+        $judul = array('title' => 'Ubah Job Orders');
+        $title = "Ubah Job Orders";
+        $job_orders = JobOrder::findOrFail($id);
+        $pegawai = Pegawai::all();
+        return view('joborder.edit', compact('judul', 'title', 'job_orders', 'pegawai'));
     }
 
     /**
@@ -71,9 +112,29 @@ class JobOrderController extends Controller
      * @param  \App\JobOrder  $jobOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JobOrder $jobOrder)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request , [
+            'tanggal' => 'required',
+            'customer' => 'required'
+        ]);
+
+        JobOrder::findOrFail($id)->update([
+            'tanggal' => $request->tanggal,
+            'customer' => $request->customer,
+            'jenis_order' => $request->jenis_order,
+            'size' => $request->size,
+            'pages' => $request->pages,
+            'color' => $request->color,
+            'qty' => $request->qty,
+            'finishing' => $request->finishing,
+            'deadline' => $request->deadline,
+            'pegawais_id' => $request->pegawais_id,
+            'materials' => $request->materials
+        ]);
+
+        return redirect()->route('joborder.index')->with('success','Job Order Telah DIUBAH !!');
     }
 
     /**
@@ -82,8 +143,12 @@ class JobOrderController extends Controller
      * @param  \App\JobOrder  $jobOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobOrder $jobOrder)
+    public function destroy($id)
     {
         //
+        $job_orders = JobOrder::findorfail($id);
+        $job_orders->delete();
+
+        return redirect()->back()->with('success','Job Orders Berhasil Dihapus');
     }
 }

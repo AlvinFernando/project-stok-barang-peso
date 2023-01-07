@@ -24,7 +24,7 @@
             </span>
             <div class="info-box-content">
                 <span class="info-box-text h4">Job Order</span>
-                <span class="info-box-number h4">3</span>
+                <span class="info-box-number h4">{{ $job_orders->count() }}</span>
             </div>
             <!-- /.info-box-content -->
         </div>
@@ -42,7 +42,7 @@
             </span>
             <div class="info-box-content">
                 <span class="info-box-text h4">Jumlah Barang Masuk</span>
-                <span class="info-box-number h4">4</span>
+                <span class="info-box-number h4">{{ $barangmasuks->count() }}</span>
             </div>
             <!-- /.info-box-content -->
         </div>
@@ -57,7 +57,7 @@
             </span>
             <div class="info-box-content">
                 <span class="info-box-text h4">Jumlah Barang Keluar</span>
-                <span class="info-box-number h4">2</span>
+                <span class="info-box-number h4">{{ $barangkeluars->count() }}</span>
             </div>
             <!-- /.info-box-content -->
         </div>

@@ -16,6 +16,7 @@
             <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
             <!-- Theme style -->
             <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+            <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/dist/img/logo pesoprinting2.png') }}">
       </head>
       <body class="hold-transition login-page">
             @yield('content')

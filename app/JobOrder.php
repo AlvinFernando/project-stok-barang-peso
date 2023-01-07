@@ -8,5 +8,20 @@ class JobOrder extends Model
 {
     //
     protected $table = 'job_orders';
-    protected $fillable = ['kode_barang', 'item_description', 'unit', 'qty', 'status'];
+    protected $fillable = ['tanggal',
+                            'customer',
+                            'jenis_order',
+                            'size',
+                            'pages',
+                            'color',
+                            'qty',
+                            'pegawais_id',
+                            'deadline',
+                            'finishing',
+                            'materials'
+                        ];
+
+    public function pegawais(){
+        return $this->belongsTo(Pegawai::class);
+    }
 }

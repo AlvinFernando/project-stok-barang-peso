@@ -13,4 +13,8 @@ class Barang extends Model
     public function barang_masuks(){
         return $this->hasMany(BarangMasuk::class);
     }
+
+    public function barang_keluars(){
+        return $this->hasMany(BarangKeluar::class);
+    }
 }

@@ -8,7 +8,7 @@
             <!-- Google Font: Source Sans Pro -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;1,300&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&family=Rubik:wght@300;600&family=Varela+Round&display=swap" rel="stylesheet">
             <!-- Font Awesome Icons -->
             <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
             <!-- overlayScrollbars -->
@@ -16,9 +16,10 @@
             <!-- Theme style -->
             <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
             <link rel="stylesheet" href="{{ asset('admin/dist/css/coba.css') }}">
+            <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/dist/img/logo pesoprinting2.png') }}">
             <style>
                 *{
-                    font-family: 'Kanit', sans-serif;
+                    font-family: 'Varela Round', sans-serif;
                 }
             </style>
       </head>
@@ -27,7 +28,7 @@
 
                   <!-- Preloader -->
                   <div class="preloader flex-column justify-content-center align-items-center">
-                        <img class="animation__wobble" src="{{ asset('admin/dist/img/LOGO PESO VECTOR.png') }}" alt="peso" height="100" width="350">
+                        <img class="animation__wobble" src="{{ asset('admin/dist/img/logo pesoprinting2.png') }}" alt="peso" height="350" width="380">
                   </div>
 
                         @include('layouts.navbar')
@@ -52,6 +53,21 @@
 
             <!-- REQUIRED SCRIPTS -->
             <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                $('.adddeliveryorder').on('click', function(){
+                    adddeliveryorder();
+                });
+                function adddeliveryorder(){
+                    var deliveryorder = '<div><label class="font-weight bold">Tambah Pesanan</label><hr class="mt-0"><div class="row"><div class="col-md-6"><div class="form-group">{{ Form::label('description', 'Description: ', ['class' => 'control-label'], false) }}{{ Form::text('description[]', '', array('class'=>'form-control')) }}</div></div><div class="col-md-6"><div class="form-group">{{ Form::label('qty', 'Qty: ', ['class' => 'control-label'], false) }}{{ Form::text('qty[]', '', array('class'=>'form-control')) }}</div></div></div><div class="row"><div class="col-md-6"></div><div class="col-md-6"><div class="form-group">{{ Form::label('unit', 'Unit: ', ['class' => 'control-label'], false) }}{!! Form::select('unit[]',['dos'=>'Dos','btl'=>'Btl','lembar'=>'Lembar','koli'=>'Koli','pcs'=>'Pcs','box'=>'Box']) !!}</div></div></div><div class="row"><div class="col-md-12"><div class="form-group"><div class="col-sm-12"><a href="javascript: class="btn btn-danger" style="float: right;">Hapus</a></div></div></div></div></div>';
+                    $('.deliveryorder').append(deliveryorder);
+                };
+                
+                $(document).on('click','#removed', function(){
+                    $(this).parents('.row-datas').remove();
+                });
+            </script>
+
             <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
             <!-- Bootstrap -->
             <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -8,12 +8,9 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2 lg-2" alt="User Image">
-            </div>
+        <div class="user-panel mt-3 pb-2 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block text-bold text-light">{{Auth::user()->name}}</a>
+                WELCOME, <a href="#" class="d-block text-bold text-light">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -47,13 +44,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/barang_masuk" class="nav-link text-light">
+                        <a href="{{ route('barang_masuk.index') }}" class="nav-link text-light">
                             <i class="fas fa-bahai nav-icon text-light"></i>
                             <p>Data Barang Masuk</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/barang_keluar" class="nav-link text-light">
+                        <a href="{{ route('barang_keluar.index') }}" class="nav-link text-light">
                             <i class="fas fa-bahai nav-icon text-light"></i>
                             <p>Data Barang Keluar</p>
                         </a>
@@ -63,21 +60,27 @@
             {{-- /DATA BARANG --}}
 
             {{-- DATA USER --}}
-            <li class="nav-item">
-                <a href="/pegawai" class="nav-link text-warning">
-                    <i class="nav-icon far fa-user"></i>
-                    <p>Manajemen Pegawai</p>
-                    <i class="fas fa-angle-left right"></i>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                    <a href="{{ route('pegawai.index') }}" class="nav-link text-light">
-                        <i class="fas fa-bahai nav-icon text-light"></i>
-                        <p>Data Pegawai</p>
+            @if (Auth::user()->level == 'admin')
+                <li class="nav-item">
+                    <a href="/pegawai" class="nav-link text-warning">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>Manajemen Pegawai</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
-                    </li>
-                </ul>
-            </li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            {{-- <a href="{{ route('admin0.index') }}" class="nav-link text-light">
+                                <i class="fas fa-bahai nav-icon text-light"></i>
+                                <p>Data Admin</p>
+                            </a> --}}
+                            <a href="{{ route('pegawai.index') }}" class="nav-link text-light">
+                                <i class="fas fa-bahai nav-icon text-light"></i>
+                                <p>Data Pegawai</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             <li class="nav-item">
                 <a href="/joborder" class="nav-link text-warning">
                     <i class="nav-icon fas fa-clipboard-list"></i>
@@ -85,7 +88,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/joborder" class="nav-link text-warning">
+                <a href="{{ route('deliveryorder.index') }}" class="nav-link text-warning">
+                    <i class="nav-icon fas fa-clipboard-list"></i>
+                    <p>Delivery Order</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/invoice" class="nav-link text-warning">
                     <i class="nav-icon fas fa-receipt"></i>
                     <p>Invoice</p>
                 </a>

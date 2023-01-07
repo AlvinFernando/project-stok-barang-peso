@@ -15,6 +15,10 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->string('no_inv');
+            $table->integer('total');
+            $table->unsignedBigInteger('pegawais_id');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

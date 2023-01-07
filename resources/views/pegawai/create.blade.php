@@ -24,29 +24,45 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="#" method='POST'>
+                        <form action="{{ route('pegawai.store') }}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="nama_pegawai">Nama Pegawai</label>
-                                    <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control"
+                                            name="email" placeholder="Email" value="{{ old('email') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control"
+                                            name="password" value="password" readonly>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="jabatan">Jabatan</label>
-                                    <input type="text" name="jabatan" id="jabatan" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nama">Nama Pegawai</label>
+                                            <input type="text" name="nama" id="nama" class="form-control" value="{{ old('nama') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="jabatan">Jabatan</label>
+                                            <input type="text" name="jabatan" id="jabatan" class="form-control" value="{{ old('jabatan') }}">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" name="alamat" id="alamat" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="telp">Telp</label>
-                                    <input type="text" name="telp" id="telp" class="form-control">
-                                </div>
+
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <a href="{{ route('barang.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                                <a href="{{ route('pegawai.index') }}" class="btn btn-secondary btn-sm">Back</a>
                                 <button type="submit" class="btn btn-primary float-right">Submit</button>
                             </div>
                         </form>

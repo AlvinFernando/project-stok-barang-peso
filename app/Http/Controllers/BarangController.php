@@ -66,9 +66,13 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Barang $barang)
+    public function show($id)
     {
         //
+        $barangs = Barang::findOrFail($id);
+        $judul = array('title' => 'Data Barang');
+        $title = "Detail Barang";
+        return view('barang.show', compact('barangs','judul', 'title'));
     }
 
     /**
@@ -80,8 +84,8 @@ class BarangController extends Controller
     public function edit($id)
     {
         //
-        $judul = array('title' => 'Data Barang');
-        $title = "Tambah Data Barang";
+        $judul = array('title' => 'Ubah Data Barang');
+        $title = "Ubah Data Barang";
         $barangs = Barang::findOrFail($id);
         return view('barang.edit', compact('judul', 'title', 'barangs'));
     }

@@ -21,9 +21,15 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12">
                     <div class="info-box bg-dark">
-                        <div class="info-box-content text-center h4">
-                            SELAMAT DATANG DI HALAMAN ADMIN PESO (Offsite, Digital and Printing)
-                        </div>
+                        @if (Auth::user()->level == 'admin')
+                            <div class="info-box-content text-center h4">
+                                SELAMAT DATANG DI HALAMAN ADMIN PESO (Offsite, Digital and Printing)
+                            </div>
+                        @else
+                            <div class="info-box-content text-center h4">
+                                SELAMAT DATANG DI HALAMAN PEGAWAI PESO (Offsite, Digital and Printing)
+                            </div>
+                        @endif
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
@@ -32,7 +38,7 @@
             </div>
             @include('dashboards.data')
 
-            
+
             <!-- /.row -->
         </div><!--/. container-fluid -->
     </section>

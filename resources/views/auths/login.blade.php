@@ -2,7 +2,7 @@
 @section('content')
       <div class="login-box">
             <div class="login-logo">
-                  <img src="{{ asset('admin/dist/img/LOGO PESO VECTOR.png') }}" alt="peso" class="brand-image ml-3 mb-1 mt-1" style="opacity: .8; width: 150px; height: 50px;">
+                <img src="{{ asset('admin/dist/img/logo pesoprinting2.png') }}" alt="peso" class="brand-image ml-3 mb-1 mt-1" style="opacity: .8; width: 120px; height: 100px;">
             </div>
             <!-- /.login-logo -->
 
@@ -29,7 +29,7 @@
                                           </div>
                                     </div>
                               </div>
-                              
+
                               <div class="row">
                                     <div class="col-8">
                                           <div class="icheck-primary">

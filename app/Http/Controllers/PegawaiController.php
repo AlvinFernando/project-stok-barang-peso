@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Pegawai;
+use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
 {
@@ -15,9 +18,9 @@ class PegawaiController extends Controller
     public function index()
     {
         //
-        $judul = array('title' => 'Manajemen Pegawai');
+        $title = "Data Pegawai";
         $pegawais = Pegawai::orderBy('updated_at', 'DESC')->paginate(5);
-        return view('pegawai.index', compact('judul', 'pegawais'));
+        return view('pegawai.index', compact('pegawais', 'title'));
     }
 
     /**
@@ -28,8 +31,8 @@ class PegawaiController extends Controller
     public function create()
     {
         //
-        $judul = array('title' => 'Input Data Pegawai');
-        return view('pegawai.create', $judul);
+        $title = "Tambah Data Pegawai";
+        return view('pegawai.create', compact('title'));
     }
 
     /**
@@ -41,6 +44,24 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'email' => 'required|email|unique:users'
+        ]);
+
+
+        //insert ke table user
+        $user = new \App\User;
+        $user->level = 'pegawai';
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        $request->request->add([ 'user_id' => $user->id ]);
+        Pegawai::create($request->all());
+
+        return redirect('pegawai')->with('success','Data Pegawai Telah Diinput !!');
     }
 
     /**
@@ -60,9 +81,12 @@ class PegawaiController extends Controller
      * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pegawai $pegawai)
+    public function edit($id)
     {
         //
+        $title = "Pegawai";
+        $pegawais = Pegawai::findOrFail($id);
+        return view('pegawai.edit', compact('title', 'pegawais'));
     }
 
     /**
@@ -75,6 +99,19 @@ class PegawaiController extends Controller
     public function update(Request $request, Pegawai $pegawai)
     {
         //
+        $this->validate($request , [
+            'nama' => 'required|max:100',
+            'jabatan' => 'required'
+        ]);
+
+        $pegawais_data = [
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan
+        ];
+
+        $pegawai->update($pegawais_data);
+
+        return redirect()->route('pegawai.index')->with('success','Data Pegawai Telah DIUBAH !!');
     }
 
     /**
@@ -83,8 +120,12 @@ class PegawaiController extends Controller
      * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy($id)
     {
         //
+        $pegawais = Pegawai::findorfail($id);
+        $pegawais->delete();
+
+        return redirect()->back()->with('success','Pegawai Berhasil Dihapus');
     }
 }

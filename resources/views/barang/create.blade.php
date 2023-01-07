@@ -26,7 +26,7 @@
                         <!-- form start -->
                         <div class="card-body">
                             {{ Form::open([
-                                'action' => "barang.store",
+                                'route' => "barang.store",
                                 'method' => 'POST',
                                 'enctype' => "multipart/form-data"
                             ]) }}
@@ -43,20 +43,21 @@
                             </div>
                             <div class="form-group">
                                 {{ Form::label('unit', 'Unit: ', ['class' => 'control-label'], false) }}
-                                {!! Form::select('unit',[
-                                    'dos'=>'Dos',
-                                    'btl'=>'Btl',
-                                    'lembar'=>'Lembar',
-                                    'koli'=>'Koli',
-                                    'pcs'=>'Pcs',
-                                    'box'=>'Box'
-                                ]) !!}
+                                <select name ="unit" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="0" disabled="true" selected="true">== Unit ==</option>
+                                    <option value="Dos" {{(old('unit') == 'Dos') ? 'selected' : ''}}>Dos</option>
+                                    <option value="Btl" {{(old('unit') == 'Btl') ? 'selected' : ''}}>Btl</option>
+                                    <option value="Lembar" {{(old('unit') == 'Lembar') ? 'selected' : ''}}>Lembar</option>
+                                    <option value="Koli" {{(old('unit') == 'Koli') ? 'selected' : ''}}>Koli</option>
+                                    <option value="Pcs" {{(old('unit') == 'Pcs') ? 'selected' : ''}}>Pcs</option>
+                                    <option value="Box" {{(old('unit') == 'Box') ? 'selected' : ''}}>Box</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                {{ Form::label('qty', 'Items: ', ['class' => 'control-label'], false) }}
+                                {{ Form::label('qty', 'Qty: ', ['class' => 'control-label'], false) }}
                                 {{ Form::text('qty', '', array('class'=>'form-control')) }}
                             </div>
-                            
+
                         </div>
                         <!-- /.card-body -->
 

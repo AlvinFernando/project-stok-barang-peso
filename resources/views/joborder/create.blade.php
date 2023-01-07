@@ -24,67 +24,88 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="#" method='POST'>
+                        {{ Form::open([
+                                'route' => "joborder.store",
+                                'method' => 'POST',
+                                'enctype' => "multipart/form-data"
+                            ]) }}
+                            {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="tanggal">Tanggal</label>
-                                            {{-- <input type="text" name="tanggal" id="tanggal" class="form-control" value="{{ $joborder->created_at }}"> --}}
+                                            <input type="date" name="tanggal" id="tanggal" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="customer">Nama Customer</label>
-                                            <input type="text" name="customer" id="customer" class="form-control">
+                                            {{ Form::label('customer', 'Nama Customer ', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('customer', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="jenis_order">Jenis Order</label>
-                                            <input type="text" name="jenis_order" id="jenis_order" class="form-control">
+                                            {{ Form::label('jenis_order', 'Jenis Order', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('jenis_order', '', array('class'=>'form-control')) }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="size">Size</label>
-                                            <input type="text" name="size" id="size" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="color">Color</label>
-                                            <input type="text" name="color" id="color" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="qty">Qty</label>
-                                            <input type="text" name="qty" id="qty" class="form-control">
+                                            {{ Form::label('size', 'Size', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('size', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="pages">Pages</label>
-                                            <input type="text" name="pages" id="pages" class="form-control">
+                                            {{ Form::label('color', 'Color', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('color', '', array('class'=>'form-control')) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{ Form::label('qty', 'Qty', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('qty', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="pegawai">Attented</label>
-                                            <input type="text" name="pegawai" id="pegawai" class="form-control">
+                                            {{ Form::label('pages', 'Pages', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('pages', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="deadline">Deadline</label>
-                                            <input type="text" name="deadline" id="deadline" class="form-control">
+                                            {{ Form::label('materials', 'Materials', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('materials', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="sign">Sign</label>
-                                            <input type="text" name="sign" id="sign" class="form-control">
+                                            {{ Form::label('finishing', 'Finishing', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('finishing', '', array('class'=>'form-control')) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ Form::label('deadline', 'Deadline', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('deadline', '', array('class'=>'form-control')) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ Form::label('pegawais_id', 'Attented By', ['class' => 'control-label'], false) }}
+                                            <select name ="pegawais_id" class="form-control" id="exampleFormControlSelect1">
+                                                <option value="0" disabled="true" selected="true">== Pilih Pegawai ==</option>
+                                                @foreach($pegawai as $r)
+                                                    <option value="{{ $r->id }}">{{ $r->nama }}</option>
+                                                @endforeach
+                                          </select>
                                         </div>
                                     </div>
                                 </div>
@@ -92,10 +113,10 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <a href="{{ route('barang.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                                <a href="{{ route('joborder.index') }}" class="btn btn-secondary btn-sm">Back</a>
                                 <button type="submit" class="btn btn-primary float-right">Submit</button>
                             </div>
-                        </form>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>

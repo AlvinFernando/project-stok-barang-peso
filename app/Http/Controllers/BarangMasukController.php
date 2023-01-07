@@ -46,6 +46,20 @@ class BarangMasukController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request , [
+            'barangs_id' => 'required',
+            'supplier' => 'required',
+            'qty' => 'required',
+            'tanggal' => 'required'
+        ]);
+
+        BarangMasuk::create($request->all());
+
+        $barangs = Barang::findOrFail($request->barangs_id);
+        $barangs->qty += $request->qty;
+        $barangs->save();
+
+        return redirect('barang_masuk')->with('success','Barang Masuk Telah Diinput !!');
     }
 
     /**
@@ -65,9 +79,13 @@ class BarangMasukController extends Controller
      * @param  \App\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangMasuk $barangMasuk)
+    public function edit($id)
     {
         //
+        $title = "Ubah Barang Masuk";
+        $barangmasuks = BarangMasuk::findOrFail($id);
+        $barangs = Barang::all();
+        return view('barang_masuk.edit', compact('title', 'barangs', 'barangmasuks'));
     }
 
     /**
@@ -77,9 +95,23 @@ class BarangMasukController extends Controller
      * @param  \App\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangMasuk $barangMasuk)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request , [
+            'barangs_id' => 'required',
+            'supplier' => 'required'
+        ]);
+
+        $barangmasuks_data = [
+            'barangs_id' => $request->barangs_id,
+            'supplier' => $request->supplier,
+            'tanggal' => $request->tanggal,
+        ];
+
+        BarangMasuk::whereId($id)->update($barangmasuks_data);
+
+        return redirect()->route('barang_masuk.index')->with('success','Barang Masuk Telah DIUBAH !!');
     }
 
     /**
@@ -88,8 +120,13 @@ class BarangMasukController extends Controller
      * @param  \App\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangMasuk $barangMasuk)
+    public function destroy($id)
     {
         //
+        $barangmasuks = BarangMasuk::findorfail($id);
+        $barangmasuks->delete();
+
+        return redirect()->back()->with('success','Barang Masuk Berhasil Dihapus');
     }
 }
+    

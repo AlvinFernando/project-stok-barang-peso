@@ -23,34 +23,31 @@
                         <h3 class="card-title">EDIT PEGAWAI</h3>
                     </div>
                     <!-- /.card-header -->
+                    <div class="card-body">
+                        {{ Form::open([
+                            'action' => ['PegawaiController@update', $pegawais->id],
+                            'method' => 'PUT',
+                            'enctype' => "multipart/form-data"
+                        ]) }}
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            {{ Form::label('nama', 'Kode Barang: ', ['class' => 'control-label'], false) }}
+                            {{ Form::text('nama',$pegawais->nama , array('class'=>'form-control')) }}
 
-                    <!-- form start -->
-                    <form action="#" method='POST'>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nama_pegawai">Nama Pegawai</label>
-                                <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="jabatan">Jabatan</label>
-                                <input type="text" name="jabatan" id="jabatan" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" id="alamat" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="telp">Telp</label>
-                                <input type="text" name="telp" id="telp" class="form-control">
-                            </div>
                         </div>
-                        <!-- /.card-body -->
+                        <div class="form-group">
+                            {{ Form::label('jabatan', 'Items: ', ['class' => 'control-label'], false) }}
+                            {{ Form::text('jabatan', $pegawais->jabatan, array('class'=>'form-control')) }}
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
 
-                        <div class="card-footer">
-                            <a href="{{ route('barang.index') }}" class="btn btn-secondary btn-sm">Back</a>
-                            <button type="submit" class="btn btn-primary float-right">Submit</button>
-                        </div>
-                    </form>
+                <div class="card-footer">
+                    <a href="{{ route('pegawai.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                    <button type="submit" class="btn btn-primary float-right">UPDATE</button>
+                </div>
+                {{ Form::close() }}
                 </div>
             </div>
         </div>

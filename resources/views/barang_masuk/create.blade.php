@@ -26,37 +26,33 @@
                         <!-- form start -->
                         <div class="card-body">
                             {{ Form::open([
-                                'action' => "barang_store.store",
+                                'route' => "barang_masuk.store",
                                 'method' => 'POST',
                                 'enctype' => "multipart/form-data"
                             ]) }}
                             {{ csrf_field() }}
 
                             <div class="form-group">
-                                {{ Form::label('kode_barang', 'Kode Barang: ', ['class' => 'control-label'], false) }}
-                                {{ Form::text('kode_barang', '', array('class'=>'form-control')) }}
-
+                                {{ Form::label('barangs_id', 'Pilih Barang: ', ['class' => 'control-label'], false) }}
+                                <select name ="barangs_id" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="0" disabled="true" selected="true">== Pilih Barang ==</option>
+                                    @foreach($barangs as $r)
+                                        <option value="{{ $r->id }}" {{(old('barangs_id') == 'id') ? 'selected' : ''}}>{{ $r->item_description }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                {{ Form::label('item_description', 'Items: ', ['class' => 'control-label'], false) }}
-                                {{ Form::text('item_description', '', array('class'=>'form-control')) }}
+                                {{ Form::label('supplier', 'Supplier: ', ['class' => 'control-label'], false) }}
+                                {{ Form::text('supplier', '', array('class'=>'form-control')) }}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('unit', 'Unit: ', ['class' => 'control-label'], false) }}
-                                {!! Form::select('unit',[
-                                    'dos'=>'Dos',
-                                    'btl'=>'Btl',
-                                    'lembar'=>'Lembar',
-                                    'koli'=>'Koli',
-                                    'pcs'=>'Pcs',
-                                    'box'=>'Box'
-                                ]) !!}
-                            </div>
-                            <div class="form-group">
-                                {{ Form::label('qty', 'Items: ', ['class' => 'control-label'], false) }}
+                                {{ Form::label('qty', 'Qty: ', ['class' => 'control-label'], false) }}
                                 {{ Form::text('qty', '', array('class'=>'form-control')) }}
                             </div>
-
+                            <div class="form-group">
+                                {{ Form::label('tanggal', 'Items: ', ['class' => 'control-label'], false) }}
+                                {{ Form::date('tanggal', '', array('class'=>'form-control')) }}
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\InvoiceBarang;
+use App\Pegawai;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -15,6 +17,11 @@ class InvoiceController extends Controller
     public function index()
     {
         //
+        $title = "Data Invoice";
+        $judul = array('title' => 'Data Invoice');
+        $invoices = Invoice::paginate(10);
+        $pegawais = Pegawai::all();
+        return view('invoice.index', compact('judul', 'invoices', 'title', 'pegawais'));
     }
 
     /**
@@ -25,6 +32,10 @@ class InvoiceController extends Controller
     public function create()
     {
         //
+        $judul = array('title' => 'Invoice');
+        $title = "Tambah Invoices";
+        $pegawais = Pegawai::all();
+        return view('invoice.create', compact('judul', 'title', 'pegawais'));
     }
 
     /**
@@ -36,6 +47,33 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         //
+        $invoices = Invoice::create([
+            'no_inv' => $request->no_inv,
+            'pegawais_id' => $request->pegawais_id,
+            'tanggal' => $request->tanggal,
+            'nama' => $request->nama,
+            'customer' => $request->customer,
+            'telp' => $request->telp,
+            'terbilang' => $request->terbilang,
+        ]);
+
+        // dd($request->all());
+
+        if(count($request->description) > 0){
+            foreach($request->description as $item => $value){
+                $datas2 = array(
+                    'invoices_id' => $invoices->id,
+                    'jenis_order'=> $request->jenis_order[$item],
+                    'qty' => $request->qty[$item],
+                    'unit'=> $request->unit[$item],
+                    'harga' => $request->harga[$item],
+                    'jumlah'=> ($request->qty[$item])*($request->harga[$item]),
+                );
+                InvoiceBarang::create($datas2);
+            }
+        }
+
+        return redirect('deliveryorder')->with('success','Delivery Order Telah Diinput !!');
     }
 
     /**

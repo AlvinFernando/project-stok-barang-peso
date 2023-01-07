@@ -19,13 +19,12 @@ class CreateJobOrdersTable extends Migration
             $table->string('customer');
             $table->string('jenis_order');
             $table->text('size');
-            $table->unsignedBigInteger('barangs_id');
             $table->text('pages');
             $table->text('color');
-            $table->integer('qty');
+            $table->text('finishing');
+            $table->text('qty');
             $table->unsignedBigInteger('pegawais_id');
             $table->string('deadline');
-            $table->string('sign');
             $table->timestamps();
         });
     }
