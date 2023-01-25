@@ -1,0 +1,8 @@
+email : adminkoko@peso.co.id
+password : adminkoko1234
+
+email : meme_ike@peso.co.id
+password : memeike1234
+
+email : pegawai@peso.co.id
+password : kepsek1234

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DeliveryOrder;
 use App\DeliveryOrderBarang;
 use App\Pegawai;
+use PDF;
+
 use Illuminate\Http\Request;
 
 class DeliveryOrderController extends Controller
@@ -19,7 +21,7 @@ class DeliveryOrderController extends Controller
         //
         $title = "Data Delivery Order";
         $judul = array('title' => 'Data Delivery Order');
-        $delivery_order = DeliveryOrder::paginate(5);
+        $delivery_order = DeliveryOrder::orderBy('created_at', 'desc')->paginate(5);
         $pegawais = Pegawai::all();
         return view('deliveryorder.index', compact('judul', 'delivery_order', 'title', 'pegawais'));
     }
@@ -130,7 +132,7 @@ class DeliveryOrderController extends Controller
         return redirect()->route('deliveryorder.index')->with('success','Delivery Order Telah Diupdate !!');
 
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -146,12 +148,12 @@ class DeliveryOrderController extends Controller
         return redirect()->back()->with('success','Delivery Order Berhasil Dihapus');
     }
 
-    public function print_delivery_order($id)
+    public function cetak_delivery_order($id)
     {
-        //
-        $delivery_orders = DeliveryOrder::findOrFail($id);
+        $delivery_orders = DeliveryOrder::find($id);
         $delivery_order_barangs = DeliveryOrderBarang::where('do_id', $delivery_orders->id)->get();
-        return view('deliveryorder.do', compact('delivery_orders', 'delivery_order_barangs'));
+        $pdf = PDF::loadview('deliveryorder.do', compact('delivery_orders', 'delivery_order_barangs'))->setPaper('a5', 'landscape');
+        return $pdf->stream();
     }
 
 }

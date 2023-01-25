@@ -79,22 +79,19 @@
                                             </div>
                                             <!-- /.row -->
 
+                                            <br>
                                             <!-- this row will not appear when printing -->
                                             <div class="row no-print">
                                                 <div class="col-12">
-                                                    <a href="{{ route('print-delivery-order') }}" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                                                    <button type="button" class="btn btn-danger float-right"><i class="fas fa-download"></i>
-                                                        Download PDF
-                                                    </button>
+                                                    <a href="{{ route('deliveryorder.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                                                    <a href="{{ route('cetak_do', $delivery_orders->id) }}" rel="noopener"
+                                                    target="_blank" class="btn btn-default float-right"><i class="fas fa-print"></i> CETAK </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ route('deliveryorder.index') }}" class="btn btn-secondary btn-sm">Back</a>
                         </div>
                         <!-- /.card-body -->
                     </div>

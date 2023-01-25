@@ -18,16 +18,13 @@
             </thead>
         </table>
         <br>
-        <hr style="border: 1px solid black; ">
-        <table>
-           <strong>To : {{ $delivery_orders->customer }}</strong><br>
-        </table>
+        <br>
         <table>
             <thead style="border: 1px solid black;">
                 <tr cellpadding="1" align="center">
-                    <th rowspan="3" width="100px" style="border: 1px solid black;"></th>
-                    <th rowspan="3" width="350px" style="text-align: center; border: 1px solid black;">DELIVERY ORDER </th>
-                    <th width="300px" style="margin-left: 20px; padding-left: 5px; border: 1px solid black;" colspan="2"><b>No Delivery Order : {{ $delivery_orders->no_do }}</b></th>
+                    <th rowspan="3" width="100px" style="border: 1px solid black;">WATER AID</th>
+                    <th rowspan="3" width="350px" style="text-align: center; border: 1px solid black;">INVOICES </th>
+                    <th width="300px" style="margin-left: 20px; padding-left: 5px; border: 1px solid black;" colspan="2"><b>No Delivery Order : </b></th>
                 </tr>
                 <tr>
                     <th colspan="2"  style="padding-left: 5px; border: 1px solid black;"><b>No PO : </b></th>
@@ -42,34 +39,37 @@
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Qty</th>
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Unit</th>
                 </tr>
-                @foreach ($delivery_order_barangs as $v => $dob)
-                    <tr class="trrx">
-                        <td style="padding-left: 5px;" colspan="2">{{ $dob->description }}</td>
-                        <td class="trrx" style="padding-left: 5px; text-align: center;">{{ $dob->qty }}</td>
-                        <td style="padding-left: 5px; text-align: center;">{{ $dob->unit }}</td>
-                    </tr>
-                    @endforeach
+                <tr class="trrx">
+                    <td style="padding-left: 5px;" colspan="2"></td>
+                    <td class="trrx" style="padding-left: 5px; text-align: center;"></td>
+                    <td style="padding-left: 5px; text-align: center;"></td>
+                </tr>
                     <tr style="border-top: 1px solid black;">
                         <td></td><td></td><td></td><td></td>
                     </tr>
             </tbody>
         </table>
+
         <br>
         <table width="680px">
             <tr>
                 <td rowspan="2">
-                    <strong>Date</strong> : {{ $delivery_orders->created_at->toFormattedDateString() }} <br>
-                    <strong>Name</strong> : {{ $delivery_orders->nama }} <br>
-                    <strong>Phone</strong> : {{ $delivery_orders->phone }} <br>
+                    <strong>PAYMENT SHOULD BE</strong> :  <br>
+                    <strong>IBAN</strong> : TL38 0050 6010 0005 4765 620 <br>
+                    <strong>BANK MANDIRI</strong> : 601-00-0054765-6 <br>
+                    <strong>RECEIVED</strong> :
+                    <strong>Date</strong> : Jan 12th<br>
+                    <strong>Name</strong> : Judisth<br>
+                    <strong>Phone</strong> : +670 833 0702 0558<br>
                     <strong>Signature</strong> :  <br>
                 </td>
                 <td style="margin-top: -10px; padding-bottom: 20px; text-align: right; margin-right: 25px;">
-                    <b>DILI, {{ $delivery_orders->created_at->toFormattedDateString() }}</b>
+                    <b>DILI, Jan 12th</b>
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right; margin-right: 25px; padding-top: 20px;">
-                    <b>{{ $delivery_orders->pegawais['nama'] }}</b>
+                <td style="text-align: right; margin-right: 25px; padding-top: 40px;">
+                    <b>(JUNITA DOS SANTOS)</b>
                 </td>
             </tr>
         </table>

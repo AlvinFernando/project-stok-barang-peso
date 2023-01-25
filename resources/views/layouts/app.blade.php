@@ -62,7 +62,7 @@
                     var deliveryorder = '<div><label class="font-weight bold">Tambah Pesanan</label><hr class="mt-0"><div class="row"><div class="col-md-6"><div class="form-group">{{ Form::label('description', 'Description: ', ['class' => 'control-label'], false) }}{{ Form::text('description[]', '', array('class'=>'form-control')) }}</div></div><div class="col-md-6"><div class="form-group">{{ Form::label('qty', 'Qty: ', ['class' => 'control-label'], false) }}{{ Form::text('qty[]', '', array('class'=>'form-control')) }}</div></div></div><div class="row"><div class="col-md-6"></div><div class="col-md-6"><div class="form-group">{{ Form::label('unit', 'Unit: ', ['class' => 'control-label'], false) }}{!! Form::select('unit[]',['dos'=>'Dos','btl'=>'Btl','lembar'=>'Lembar','koli'=>'Koli','pcs'=>'Pcs','box'=>'Box']) !!}</div></div></div><div class="row"><div class="col-md-12"><div class="form-group"><div class="col-sm-12"><a href="javascript: class="btn btn-danger" style="float: right;">Hapus</a></div></div></div></div></div>';
                     $('.deliveryorder').append(deliveryorder);
                 };
-                
+
                 $(document).on('click','#removed', function(){
                     $(this).parents('.row-datas').remove();
                 });
@@ -89,5 +89,6 @@
             <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+            @stack('script')
       </body>
 </html>

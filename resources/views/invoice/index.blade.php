@@ -34,7 +34,7 @@
                                     <div class="col-md-12">
                                         <div style="float: right; margin-bottom: 10px;">
                                             <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak Excel</a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak PDF</a>
+                                            <a href="{{ route('cetak_inv') }}" target="_blank" rel="noopener" class="btn btn-danger btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak PDF</a>
                                         </div>
                                     </div>
                                 </div>

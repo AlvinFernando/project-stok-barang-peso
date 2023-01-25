@@ -18,7 +18,11 @@ class JobOrder extends Model
                             'pegawais_id',
                             'deadline',
                             'finishing',
-                            'materials'
+                            'materials',
+                            'no_jo',
+                            'jam',
+                            'materials_2',
+                            'materials_3'
                         ];
 
     public function pegawais(){

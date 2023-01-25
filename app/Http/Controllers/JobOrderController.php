@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\JobOrder;
 use App\Pegawai;
+use PDF;
 use Illuminate\Http\Request;
 
 class JobOrderController extends Controller
@@ -18,7 +19,7 @@ class JobOrderController extends Controller
         //
         $title = "Job Order";
         $judul = array('title' => 'Job Order');
-        $job_orders = JobOrder::paginate(10);
+        $job_orders = JobOrder::orderBy('created_at', 'desc')->paginate(10);
         return view('joborder.index', compact('judul', 'job_orders', 'title'));
     }
 
@@ -68,7 +69,11 @@ class JobOrderController extends Controller
             'finishing' => $request->finishing,
             'pegawais_id' => $request->pegawais_id,
             'deadline' => $request->deadline,
-            'materials' => $request->materials
+            'materials' => $request->materials,
+            'no_jo' => $request->no_jo,
+            'jam' => $request->jam,
+            'materials_2' => $request->materials_2,
+            'materials_3' => $request->materials_3
         ]);
 
         return redirect('joborder')->with('success','Data Job Orders Telah Diinput !!');
@@ -131,7 +136,11 @@ class JobOrderController extends Controller
             'finishing' => $request->finishing,
             'deadline' => $request->deadline,
             'pegawais_id' => $request->pegawais_id,
-            'materials' => $request->materials
+            'materials' => $request->materials,
+            'no_jo' => $request->no_jo,
+            'jam' => $request->jam,
+            'materials_2' => $request->materials_2,
+            'materials_3' => $request->materials_3
         ]);
 
         return redirect()->route('joborder.index')->with('success','Job Order Telah DIUBAH !!');
@@ -150,5 +159,12 @@ class JobOrderController extends Controller
         $job_orders->delete();
 
         return redirect()->back()->with('success','Job Orders Berhasil Dihapus');
+    }
+
+    public function cetak_job_order($id)
+    {
+        $job_orders = JobOrder::find($id);
+        $pdf = PDF::loadView('joborder.jo', compact('job_orders'))->setPaper('a5', 'landscape');
+        return $pdf->stream();
     }
 }

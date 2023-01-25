@@ -34,6 +34,20 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="no_jo">No. JO</label>
+                                            <input type="text" name="no_jo" id="no_jo" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="jam">Times</label>
+                                            <input type="text" name="jam" id="jam" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="tanggal">Tanggal</label>
                                             <input type="date" name="tanggal" id="tanggal" class="form-control">
                                         </div>
@@ -79,6 +93,20 @@
                                         <div class="form-group">
                                             {{ Form::label('materials', 'Materials', ['class' => 'control-label'], false) }}
                                             {{ Form::text('materials', '', array('class'=>'form-control')) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ Form::label('materials_2', 'Materials 2', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('materials_2', '', array('class'=>'form-control')) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ Form::label('materials_3', 'Materials 3', ['class' => 'control-label'], false) }}
+                                            {{ Form::text('materials_3', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
                                 </div>

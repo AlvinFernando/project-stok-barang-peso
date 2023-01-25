@@ -27,4 +27,9 @@ Route::resource('/barang_keluar', 'BarangKeluarController');
 Route::resource('/joborder', 'JobOrderController');
 Route::resource('/deliveryorder', 'DeliveryOrderController');
 Route::resource('/invoice', 'InvoiceController');
-Route::get('/printDO','DeliveryOrderController@print_delivery_order')->name('print-delivery-order');
+Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
+    Route::get('/deliveryorder/{id}/cetakDeliveryOrder','DeliveryOrderController@cetak_delivery_order')->name('cetak_do');
+    Route::get('/joborder/{id}/cetakJobOrder','JobOrderController@cetak_job_order')->name('cetak_jo');
+    Route::get('/invoice/cetakInvoice','InvoiceController@cetak_invoices')->name('cetak_inv');
+});
+
