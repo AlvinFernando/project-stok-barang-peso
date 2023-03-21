@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     //
     public function index(){
-        $title = "Dashboards";
+        $title = "PESO Printing | Dashboards";
         $data = array('title' => 'Dashboard');
         $barangs = Barang::all();
         $barangkeluars = BarangKeluar::all();

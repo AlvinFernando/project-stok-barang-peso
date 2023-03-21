@@ -50,14 +50,14 @@
                         <div class="card-body">
                             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <!-- Cetak Data Keseluruhan -->
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right; margin-bottom: 10px;">
                                             <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak Excel</a>
                                             <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak PDF</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- Cetak Data Keseluruhan -->
 
                                 <div class="row">

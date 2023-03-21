@@ -8,8 +8,8 @@ class Invoice extends Model
 {
     //
     protected $table = 'invoices';
-    protected $fillable = ['no_inv', 'total', 'pegawais_id', 'tanggal',
-                            'nama', 'customer', 'telp', 'terbilang'];
+    protected $fillable = ['no_inv', 'pegawais_id', 'tanggal',
+                            'nama', 'customer', 'telp', 'total', 'terbilang'];
 
     public function pegawais(){
         return $this->belongsTo(Pegawai::class);

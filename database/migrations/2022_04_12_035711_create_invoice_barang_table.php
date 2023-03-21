@@ -18,7 +18,7 @@ class CreateInvoiceBarangTable extends Migration
             $table->integer('invoices_id');
             $table->string('description');
             $table->integer('qty');
-            $table->integer('harga');
+            $table->float('harga');
             $table->timestamps();
         });
     }

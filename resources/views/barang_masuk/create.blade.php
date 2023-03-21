@@ -50,7 +50,7 @@
                                 {{ Form::text('qty', '', array('class'=>'form-control')) }}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('tanggal', 'Items: ', ['class' => 'control-label'], false) }}
+                                {{ Form::label('tanggal', 'Tanggal: ', ['class' => 'control-label'], false) }}
                                 {{ Form::date('tanggal', '', array('class'=>'form-control')) }}
                             </div>
                         </div>

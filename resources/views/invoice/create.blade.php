@@ -40,35 +40,33 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             {{ Form::label('tanggal', 'Tanggal', ['class' => 'control-label'], false) }}
                                             {{ Form::date('tanggal', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             {{ Form::label('customer', 'To ', ['class' => 'control-label'], false) }}
                                             {{ Form::text('customer', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             {{ Form::label('nama', 'Nama', ['class' => 'control-label'], false) }}
                                             {{ Form::text('nama', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             {{ Form::label('telp', 'Telp ', ['class' => 'control-label'], false) }}
                                             {{ Form::text('telp', '', array('class'=>'form-control')) }}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             {{ Form::label('pegawais_id', 'Attented By', ['class' => 'control-label'], false) }}
                                             <select name ="pegawais_id" class="form-control" id="exampleFormControlSelect1">
@@ -79,66 +77,80 @@
                                           </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4"></div>
                                 </div>
-
+                                <br><br>
+                                <label class="font-weight bold">LIST ORDER</label>
                                 <br>
-                                <label class="font-weight bold">Pesanan</label><hr class="mt-0">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            {{ Form::label('description', 'Description: ', ['class' => 'control-label'], false) }}
-                                            {{ Form::text('description[]', '', array('class'=>'form-control')) }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Qty</label>
-                                            <input type="number" id="qty1" class="form-control" name="qty[]">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            {{ Form::label('unit', 'Unit: ', ['class' => 'control-label'], false) }}
-                                            <select name ="unit[]" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="0" disabled="true" selected="true">== Unit ==</option>
-                                                <option value="Dos" {{(old('unit') == 'Dos') ? 'selected' : ''}}>Dos</option>
-                                                <option value="Btl" {{(old('unit') == 'Btl') ? 'selected' : ''}}>Btl</option>
-                                                <option value="Lembar" {{(old('unit') == 'Lembar') ? 'selected' : ''}}>Lembar</option>
-                                                <option value="Koli" {{(old('unit') == 'Koli') ? 'selected' : ''}}>Koli</option>
-                                                <option value="Pcs" {{(old('unit') == 'Pcs') ? 'selected' : ''}}>Pcs</option>
-                                                <option value="Box" {{(old('unit') == 'Box') ? 'selected' : ''}}>Box</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Harga</label>
-                                            <input type="number" id="harga1" class="form-control" name="harga[]">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Jumlah</label>
-                                            <input type="number" id="hasildatainv" class="form-control" name="jumlah[]">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <a href="#" class="addinvoice btn btn-primary float-right">Tambah Pesanan</a>
-                                            </div>
-                                        </div>
+                                    <div class="col-12 table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <th>Qty</th>
+                                                    <th>Unit</th>
+                                                    <th>Harga</th>
+                                                    <th>Jumlah</th>
+                                                    <th>
+                                                        {{-- <a href="javascript:" class="float-right btn btn-primary btn-sm" style="margin-bottom: 10px;" onclick="addinvoices()">
+                                                            <i class="fas fa-plus text-light"></i>
+                                                        </a> --}}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="invoices">
+                                                <tr>
+                                                    <td width="350px">
+                                                        <div class="form-group">
+                                                            {{ Form::text('description[]', '', array('class'=>'form-control')) }}
+                                                        </div>
+                                                    </td>
+                                                    <td width="100px">
+                                                        <input type="number" class="form-control" id="qty1" onchange="Sums(this)" name="qty[]">
+                                                    </td>
+                                                    <td width="130px">
+                                                        <select name ="unit[]" class="form-control" id="exampleFormControlSelect1">
+                                                            <option value="0" disabled="true" selected="true">Unit</option>
+                                                            <option value="Dos" {{(old('unit') == 'Dos') ? 'selected' : ''}}>Dos</option>
+                                                            <option value="Btl" {{(old('unit') == 'Btl') ? 'selected' : ''}}>Btl</option>
+                                                            <option value="Lembar" {{(old('unit') == 'Lembar') ? 'selected' : ''}}>Lembar</option>
+                                                            <option value="Koli" {{(old('unit') == 'Koli') ? 'selected' : ''}}>Koli</option>
+                                                            <option value="Pcs" {{(old('unit') == 'Pcs') ? 'selected' : ''}}>Pcs</option>
+                                                            <option value="Box" {{(old('unit') == 'Box') ? 'selected' : ''}}>Box</option>
+                                                        </select>
+                                                    </td>
+                                                    <td width="110px">
+                                                        <input type="number" class="form-control" id="harga1" onchange="Sums(this)" name="harga[]" min="1" step="any">
+                                                    </td>
+                                                    <td width="110px">
+                                                        <input type="number" class="form-control" id="jumlah1" name="jumlah[]" value="0" min="1" step="any" readonly>
+                                                    </td>
+                                                    <td width="1px">
+                                                        <a href="javascript:" class="addinvoices float-right btn btn-primary btn-sm" style="margin-bottom: 10px;">
+                                                            <i class="fas fa-plus text-light"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                            <tbody>
+                                                <tr style="background-color: white;" border="1">
+                                                    <th colspan="4"><strong style="float: right; font-size: 20px;">TOTAL $</strong></th>
+                                                    <th colspan="2" style="font-size: 20px;">
+                                                        <input type="number" id="total1" class="form-control" name="total" value="{{ old('total') }}" onchange="GetTotal()" min="1" step="any" readonly>
+                                                    </th>
+                                                </tr>
+                                                <tr style="background-color: white;" border="1">
+                                                    <th style="font-size: 20px;">TERBILANG</th>
+                                                    <th colspan="5">{{ Form::text('terbilang', '', array('class'=>'form-control')) }}</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <br>
 
-                                <div class="invoice"></div>
                             </div>
                             <!-- /.card-body -->
 

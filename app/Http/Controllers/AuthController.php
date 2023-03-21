@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     //
     public function login(){
-        $data = array('title' => 'PESO | Login');
+        $data = array('title' => 'PESO Printing | Login');
         return view('auths.login', $data);
     }
 

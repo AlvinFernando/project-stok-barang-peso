@@ -20,7 +20,7 @@ class DeliveryOrderController extends Controller
     {
         //
         $title = "Data Delivery Order";
-        $judul = array('title' => 'Data Delivery Order');
+        $judul = array('title' => 'PESO Printing | Delivery Order');
         $delivery_order = DeliveryOrder::orderBy('created_at', 'desc')->paginate(5);
         $pegawais = Pegawai::all();
         return view('deliveryorder.index', compact('judul', 'delivery_order', 'title', 'pegawais'));
@@ -35,7 +35,7 @@ class DeliveryOrderController extends Controller
     {
         //
         $judul = array('title' => 'Delivery Order');
-        $title = "Tambah Delivery Orders";
+        $title = "PESO Printing | Tambah DO";
         $pegawais = Pegawai::all();
         return view('deliveryorder.create', compact('judul', 'pegawais', 'title'));
     }
@@ -109,21 +109,21 @@ class DeliveryOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         //
         $delivery_orders = DeliveryOrder::findOrFail($id);
-        $dlv = DeliveryOrderBarang::where('do_id', $id)->find($id);
+        $dlv = DeliveryOrderBarang::where('do_id', $id)->delete();
 
+        $datax = $request->all();
         $delivery_orders->update($request->all());
 
-        // dd($request->all());
-
-        if(count($request->description) > 0){
-            foreach($request->description as $item => $value){
+        if($request->description){
+            foreach($datax['description'] as $item => $value){
                 $datas2 = array(
                     'do_id' => $delivery_orders->id,
-                    'description'=> $request->description[$item],
-                    'qty' => $request->qty[$item],
-                    'unit'=> $request->unit[$item],
+                    'description'=> $datax['description'][$item],
+                    'qty' => $datax['qty'][$item],
+                    'unit'=> $datax['unit'][$item],
                 );
                 DeliveryOrderBarang::updateOrCreate($datas2);
             }

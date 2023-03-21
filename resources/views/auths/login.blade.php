@@ -64,7 +64,7 @@
             <div class="row text-center">
                   <br>
                   <div class="col-md-12 ml-2">
-                        <strong>Copyright &copy; 2021 <a href="/login">PESO</a></strong>.
+                        <strong>Copyright &copy; {{ date('Y') }} <a href="/login">PESO</a></strong>.
                   </div>
             </div>
       </div>

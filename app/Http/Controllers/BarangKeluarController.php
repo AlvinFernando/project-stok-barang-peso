@@ -17,7 +17,7 @@ class BarangKeluarController extends Controller
     {
         //
         $title = "Data Barang Keluar";
-        $judul = array('title' => 'Data Barang Keluar');
+        $judul = array('title' => 'PESO Printing | Data Barang Keluar');
         $barangkeluars = BarangKeluar::paginate(10);
         $barangs = Barang::all();
         return view('barang_keluar.index', compact('judul', 'barangkeluars', 'title', 'barangs'));
@@ -32,7 +32,7 @@ class BarangKeluarController extends Controller
     {
         //
         $judul = array('title' => 'Data Barang Keluar');
-        $title = "Input Barang Keluar";
+        $title = "PESO Printing | Input Barang Keluar";
         $barangs = Barang::all();
         return view('barang_keluar.create', compact('judul', 'title', 'barangs'));
     }

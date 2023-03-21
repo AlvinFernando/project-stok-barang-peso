@@ -43,14 +43,14 @@
                                     <div class="card-body">
                                         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                             <!-- Cetak Data Keseluruhan -->
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div class="col-md-12">
                                                     <div style="float: right; margin-bottom: 10px;">
                                                         <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak Excel</a>
                                                         <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-file nav-icon text-light"></i> Cetak PDF</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- Cetak Data Keseluruhan -->
 
                                             <div class="row">
@@ -81,8 +81,10 @@
                                                                             @csrf
                                                                             @method('delete')
                                                                             <a href="{{ route('barang_keluar.show', $brgs->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye nav-icon text-light"></i></a>
-                                                                            <a href="{{ route('barang_keluar.edit', $brgs->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit nav-icon text-light"></i></a>
-                                                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash nav-icon text-light"></i></button>
+                                                                            @if (Auth::user()->level == 'admin')
+                                                                                <a href="{{ route('barang_keluar.edit', $brgs->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit nav-icon text-light"></i></a>
+                                                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash nav-icon text-light"></i></button>
+                                                                            @endif
                                                                         </form>
                                                                     </td>
                                                                 </tr>

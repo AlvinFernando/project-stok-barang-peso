@@ -81,8 +81,9 @@
                     </ul>
                 </li>
             @endif
+
             <li class="nav-item">
-                <a href="/joborder" class="nav-link text-warning">
+                <a href="{{ route('joborder.index') }}" class="nav-link text-warning">
                     <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>Job Order</p>
                 </a>
@@ -94,7 +95,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/invoice" class="nav-link text-warning">
+                <a href="{{ route('invoice.index') }}" class="nav-link text-warning">
                     <i class="nav-icon fas fa-receipt"></i>
                     <p>Invoice</p>
                 </a>

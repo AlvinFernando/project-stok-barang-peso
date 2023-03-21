@@ -68,9 +68,13 @@ class BarangMasukController extends Controller
      * @param  \App\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangMasuk $barangMasuk)
+    public function show($id)
     {
         //
+        $title = "Ubah Barang Masuk";
+        $barangmasuks = BarangMasuk::findOrFail($id);
+        $barangs = Barang::all();
+        return view('barang_masuk.show', compact('title', 'barangs', 'barangmasuks'));
     }
 
     /**
@@ -129,4 +133,3 @@ class BarangMasukController extends Controller
         return redirect()->back()->with('success','Barang Masuk Berhasil Dihapus');
     }
 }
-    

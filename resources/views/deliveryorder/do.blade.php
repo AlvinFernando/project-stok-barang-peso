@@ -5,29 +5,30 @@
         <!-- Table row -->
         <table>
             <thead>
-                <th>
+                <th width="170px">
                     <img src="{{ asset('admin/dist/img/logo pesoprinting2.png') }}" alt="peso"
-                    class="brand-image" style="width: 125px; height: 105px; margin-left: 80px;">
+                    class="brand-image" style="width: 85px; height: 70px; margin-left: 100px;">
                 </th>
-                <th style="margin-top: -10px;">
-                    <b style="font-size: 12px; margin-left: 75px;">PESO, UNIPESSOAL. LDA</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">AVE JACINTO CANDIDO, BIDAU ACADIRUHUN, DILI - TIMOR LESTE</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">MOBILE : (+670) 77584549</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">EMAIL : sales.artesgrafica@gmail.com</b><br>
+                <th width="500px" style="margin-top: -10px;">
+                    <ul type="none" style="margin-top: 15px; margin-left: 10px; font-style:unset;">
+                        <li><b style="font-size: 12px;">PESO, UNIPESSOAL. LDA</b></li>
+                        <li><b style="font-size: 12px; margin-top: -50px;">RUA DE NU'U LARAN, NO. 17, BAIRRO DOS GRILLOS, DILI, TIMOR-LESTE</b></li>
+                        <li><b style="font-size: 12px; margin-top: -50px;">MOBILE : (+670) 7758 4549 / 7372 7373</b></li>
+                        <li><b style="font-size: 12px; margin-top: -50px;">EMAIL : sales.artesgrafica@gmail.com</b></li>
+                    </ul>
                 </th>
             </thead>
         </table>
-        <br>
-        <hr style="border: 1px solid black; ">
+        <hr style="border: 1px solid black; margin-top: -2px;">
         <table>
            <strong>To : {{ $delivery_orders->customer }}</strong><br>
         </table>
         <table>
             <thead style="border: 1px solid black;">
                 <tr cellpadding="1" align="center">
-                    <th rowspan="3" width="100px" style="border: 1px solid black;"></th>
-                    <th rowspan="3" width="350px" style="text-align: center; border: 1px solid black;">DELIVERY ORDER </th>
-                    <th width="300px" style="margin-left: 20px; padding-left: 5px; border: 1px solid black;" colspan="2"><b>No Delivery Order : {{ $delivery_orders->no_do }}</b></th>
+                    <th rowspan="3"></th>
+                    <th rowspan="3" width="500px" style="text-align: center; border: 1px solid black; border-left: none !important; font-size: 18px;">DELIVERY ORDER </th>
+                    <th width="300px" style="margin-left: 20px; padding-left: 5px; border: 1px solid black;" colspan="2"><b>No DO : {{ $delivery_orders->no_do }}</b></th>
                 </tr>
                 <tr>
                     <th colspan="2"  style="padding-left: 5px; border: 1px solid black;"><b>No PO : </b></th>
@@ -38,17 +39,22 @@
             </thead>
             <tbody>
                 <tr style="border: 1px solid black;">
-                    <th colspan="2" style="padding-left: 5px;">Description</th>
+                    <th colspan="2" style="padding-left: 5px; text-align: center;">Description</th>
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Qty</th>
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Unit</th>
                 </tr>
                 @foreach ($delivery_order_barangs as $v => $dob)
-                    <tr class="trrx">
+                    <tr class="trrx" style="font-size: 12px;" height="2px" border="1">
                         <td style="padding-left: 5px;" colspan="2">{{ $dob->description }}</td>
                         <td class="trrx" style="padding-left: 5px; text-align: center;">{{ $dob->qty }}</td>
                         <td style="padding-left: 5px; text-align: center;">{{ $dob->unit }}</td>
                     </tr>
-                    @endforeach
+                @endforeach
+                    <tr class="trrx">
+                        <td style="padding-left: 5px; " height="80px" colspan="2"></td>
+                        <td class="trrx" style="padding-left: 5px; text-align: center;"></td>
+                        <td style="padding-left: 5px; text-align: center;"></td>
+                    </tr>
                     <tr style="border-top: 1px solid black;">
                         <td></td><td></td><td></td><td></td>
                     </tr>
@@ -57,18 +63,19 @@
         <br>
         <table width="680px">
             <tr>
-                <td rowspan="2">
-                    <strong>Date</strong> : {{ $delivery_orders->created_at->toFormattedDateString() }} <br>
+                <td rowspan="2" width="550px">
+                    {{-- <strong>Date</strong> : {{ $delivery_orders->created_at->toFormattedDateString() }} <br> --}}
+                    <strong>Date</strong> : {{ $delivery_orders->tanggal }} <br>
                     <strong>Name</strong> : {{ $delivery_orders->nama }} <br>
                     <strong>Phone</strong> : {{ $delivery_orders->phone }} <br>
                     <strong>Signature</strong> :  <br>
                 </td>
-                <td style="margin-top: -10px; padding-bottom: 20px; text-align: right; margin-right: 25px;">
-                    <b>DILI, {{ $delivery_orders->created_at->toFormattedDateString() }}</b>
+                <td style="margin-top: -10px; padding-bottom: 20px; text-align: center; margin-right: 25px;">
+                    <b>DILI, {{ $delivery_orders->tanggal }}</b>
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right; margin-right: 25px; padding-top: 20px;">
+                <td style="text-align: center; margin-right: 25px; padding-top: 20px;">
                     <b>{{ $delivery_orders->pegawais['nama'] }}</b>
                 </td>
             </tr>

@@ -5,7 +5,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <!-- SidebarSearch Form -->
             <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
+                {{-- <div class="input-group" data-widget="sidebar-search">
                     <input class="form-control form-control-sidebar"
                     type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
@@ -13,7 +13,7 @@
                             <i class="fas fa-search fa-fw text-light"></i>
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </li>
     </ul>

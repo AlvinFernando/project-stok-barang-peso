@@ -82,7 +82,7 @@
                                 </div>
 
                                 <br>
-                                <label class="font-weight bold">Pesanan</label><hr class="mt-0">
+                                {{-- <label class="font-weight bold">Pesanan</label><hr class="mt-0">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -122,10 +122,54 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> --}}
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">TAMBAH PESANAN DELIVERY ORDER</h3>
+                                    </div>
+
+                                    <div class="card-body p-0">
+                                        <table id="dataTables" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <th>Qty</th>
+                                                    <th>Unit</th>
+                                                    <th> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="deliveryorder">
+                                                <tr>
+                                                    <td>
+                                                        {{ Form::text('description[]', '', array('class'=>'form-control')) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ Form::text('qty[]', '', array('class'=>'form-control')) }}
+                                                    </td>
+                                                    <td>
+                                                        <select name ="unit[]" class="form-control" id="exampleFormControlSelect1">
+                                                            <option value="0" disabled="true" selected="true">== Unit ==</option>
+                                                            <option value="Dos" {{(old('unit') == 'Dos') ? 'selected' : ''}}>Dos</option>
+                                                            <option value="Btl" {{(old('unit') == 'Btl') ? 'selected' : ''}}>Btl</option>
+                                                            <option value="Lembar" {{(old('unit') == 'Lembar') ? 'selected' : ''}}>Lembar</option>
+                                                            <option value="Koli" {{(old('unit') == 'Koli') ? 'selected' : ''}}>Koli</option>
+                                                            <option value="Pcs" {{(old('unit') == 'Pcs') ? 'selected' : ''}}>Pcs</option>
+                                                            <option value="Box" {{(old('unit') == 'Box') ? 'selected' : ''}}>Box</option>
+                                                        </select>
+                                                    </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:" class="adddeliveryorder float-right btn btn-primary btn-sm" style="margin-bottom: 10px;">
+                                                            <i class="fas fa-plus text-light"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {{-- <tr class="deliveryorder" style="position: relative;"></tr> --}}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-
-                                <div class="deliveryorder"></div>
-
                             </div>
                             <!-- /.card-body -->
 

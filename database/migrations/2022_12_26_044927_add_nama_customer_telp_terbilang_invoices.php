@@ -18,7 +18,6 @@ class AddNamaCustomerTelpTerbilangInvoices extends Migration
             $table->text('nama');
             $table->text('customer');
             $table->text('telp');
-            $table->text('terbilang');
         });
     }
 
