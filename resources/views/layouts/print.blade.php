@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- <title>{{ $title }}</title> --}}
-
         <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
         <style>
             *{
@@ -13,6 +12,10 @@
                 box-sizing: border-box;
             }
 
+            /* @font-face {
+                font-family: 'tulisan_keren';
+                src: url('admin/EurostileExtended.ttf');
+            } */
             body{
                 font-family: 'Varela Round', sans-serif;
                 font-size: 12px;
@@ -23,12 +26,12 @@
 
             .invoice{
                 margin: auto;
-                padding: 20px;
-                opacity: .75;
+                padding: 10px;
+                opacity: 0;
             }
 
             .container{
-                margin-top: 20px;
+                margin-top: 5px;
             }
 
             .tableinv{
@@ -39,6 +42,7 @@
                 border-right: 1px solid black;
                 border-left: 1px solid black;
             }
+
         </style>
 
     </head>

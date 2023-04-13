@@ -3,28 +3,28 @@
 <div class="container">
     <div class="invoice">
         <!-- Table row -->
-        <table>
+        <table height="20%" class="tableinv">
             <thead>
-                <th width="170px">
+                <th width="100px">
                     <img src="{{ asset('admin/dist/img/logo pesoprinting2.png') }}" alt="peso"
-                    class="brand-image" style="width: 85px; height: 70px; margin-left: 100px;">
+                    class="brand-image" style="width: 100px; height: 80px; margin-top: -5px;">
                 </th>
-                <th width="500px" style="margin-top: -10px;">
-                    <ul type="none" style="margin-top: 15px; margin-left: 10px; font-style:unset;">
-                        <li><b style="font-size: 12px;">PESO, UNIPESSOAL. LDA</b></li>
-                        <li><b style="font-size: 12px; margin-top: -50px;">RUA DE NU'U LARAN, NO. 17, BAIRRO DOS GRILLOS, DILI, TIMOR-LESTE</b></li>
-                        <li><b style="font-size: 12px; margin-top: -50px;">MOBILE : (+670) 7758 4549 / 7372 7373</b></li>
-                        <li><b style="font-size: 12px; margin-top: -50px;">EMAIL : sales.artesgrafica@gmail.com</b></li>
-                    </ul>
+                <th width="600px" style="margin-top: -10px;">
+                    <img src="{{ asset('foto/alamatpeso.png') }}" style="width: 15.75cm; height: 2.5cm;" alt="">
+                    {{-- <ul type="none" style="margin-top: -2px; margin-left: 10px; ">
+                        <li><b style="font-size: 14px;">PESO, UNIPESSOAL. LDA</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">RUA DE NU'U LARAN, NO. 17, BAIRRO DOS GRILLOS, DILI, TIMOR-LESTE</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">MOBILE : (+670) 7758 4549 / 7372 7373</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">EMAIL : sales.artesgrafica@gmail.com</b></li>
+                    </ul> --}}
                 </th>
             </thead>
         </table>
-        <hr style="border: 1px solid black; margin-top: -2px;">
         <table>
             <thead style="border: 1px solid black;">
                 <tr cellpadding="1" align="center">
                     <th rowspan="3" width="100px" style="text-align: center; ">{{ $invoices->customer }}</th>
-                    <th rowspan="3" colspan="2" width="150px" style="text-align: center; border: 1px solid black;">INVOICES </th>
+                    <th rowspan="3" colspan="2" width="150px" style="text-align: center; border: 1px solid black;">INVOICE</th>
                     <th width="50px" style="margin-left: 20px; padding-left: 5px;"><b>No</b></th>
                     <th colspan="2" width="300px" style="margin-left: 20px; padding-left: 5px; border: 1px solid black;"><b>{{ $invoices->no_inv }}</b></th>
                 </tr>
@@ -69,24 +69,32 @@
         </table>
 
         <br>
-        <table width="680px">
+        <table width="720px">
             <tr>
                 <td rowspan="2" width="500px" style="font-size: 12px; line-height: 15px;">
-                    <strong>PAYMENT SHOULD BE :  {{ $invoices->terbilang }}<br></strong>
-                    <strong>IBAN : TL38 0050 6010 0005 4765 620 <br></strong>
-                    <strong>BANK MANDIRI : 601-00-0054765-6 <br></strong>
-                    <strong>RECEIVED :
-                    <strong>Date : {{ $invoices->tanggal }}<br></strong>
-                    <strong>Name : {{ $invoices->nama }}<br></strong>
-                    <strong>Phone : {{ $invoices->telp }}<br></strong>
-                    <strong>Signature :  <br></strong>
+                    <strong>PAYMENT SHOULD BE&nbsp; :  {{ $invoices->terbilang }}<br></strong>
+                    {{-- <strong>IBAN&ensp;&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;: TL38 0050 6010 0005 4765 620 <br></strong> --}}
+                    <strong>BANK MANDIRI&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;: 601-00-0054765-6 <br></strong>
+                    <strong>RECEIVED&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&nbsp;&ensp;&nbsp;&ensp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp;&nbsp; : <br></strong>
+                    <strong>Date&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &ensp;&nbsp;&ensp;&nbsp;&ensp;: {{ showDate($invoices->tanggal, 'd F Y') }}<br></strong>
+                    <strong>Name&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &ensp;&nbsp;&ensp;: {{ $invoices->nama }}<br></strong>
+                    <strong>Phone&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&nbsp;&ensp;: {{ $invoices->telp }}<br></strong>
+                    <strong>Signature&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp;&nbsp;&ensp;:  <br></strong>
                 </td>
-                <td style="text-align: center;">
-                    <b>DILI, Jan, 12 2023</b>
+                <td style="text-align: center; padding-bottom: 30px; padding-left: 40px; font-size: 12px;">
+                    <b>DILI, {{ showDate($invoices->tanggal, 'd F Y') }}</b>
                 </td>
             </tr>
             <tr>
-                <td style="text-align: center; padding-top: 10px;">
+                <td style="text-align: center; padding-top: 30px; padding-left: 40px;">
                     <b>( {{ $invoices->pegawais['nama'] }} )</b>
                 </td>
             </tr>

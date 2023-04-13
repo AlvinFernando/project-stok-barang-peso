@@ -11,6 +11,8 @@ class Invoice extends Model
     protected $fillable = ['no_inv', 'pegawais_id', 'tanggal',
                             'nama', 'customer', 'telp', 'total', 'terbilang'];
 
+    protected $dates = ['tanggal'];
+
     public function pegawais(){
         return $this->belongsTo(Pegawai::class);
     }

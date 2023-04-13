@@ -24,6 +24,7 @@ class JobOrder extends Model
                             'materials_2',
                             'materials_3'
                         ];
+    protected $dates = ['tanggal'];
 
     public function pegawais(){
         return $this->belongsTo(Pegawai::class);

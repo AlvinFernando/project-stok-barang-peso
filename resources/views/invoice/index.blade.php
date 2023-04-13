@@ -46,6 +46,7 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>No</th>
+                                                    <th>No Invoice</th>
                                                     <th>Nama Customer</th>
                                                     <th>Total</th>
                                                     <th>Tanggal</th>
@@ -56,9 +57,10 @@
                                                 @forelse($invoices as $result => $invs)
                                                     <tr>
                                                         <td>{{ $result + $invoices->firstItem() }}</td>
+                                                        <td>{{ $invs->no_inv }}</td>
                                                         <td>{{ $invs->customer }}</td>
                                                         <td>$ {{ $invs->total }}.00</td>
-                                                        <td>{{ $invs->tanggal }}</td>
+                                                        <td>{{ showDate($invs->tanggal, 'd F Y') }}</td>
                                                         <td>
                                                             <form action="{{ route('invoice.destroy', $invs->id )}}" method="POST">
                                                                 @csrf
@@ -73,7 +75,7 @@
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="5">Tidak Ada Data Invoices</td>
+                                                        <td colspan="6">Tidak Ada Data Invoices</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>
@@ -83,7 +85,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">
-                                            {{-- {{ $barangmasuks->links() }} --}}
+                                            {{ $invoices->links() }}
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-7">

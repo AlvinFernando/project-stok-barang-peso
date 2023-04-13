@@ -3,21 +3,23 @@
 <div class="container">
     <div class="invoice">
         <!-- Table row -->
-        <table>
+        <table height="35%">
             <thead>
-                <th>
+                <th width="120px">
                     <img src="{{ asset('admin/dist/img/logo pesoprinting2.png') }}" alt="peso"
-                    class="brand-image" style="width: 125px; height: 105px; margin-left: 80px;">
+                    class="brand-image" style="width: 100px; height: 75px; margin-top:-20px; margin-left: 45px;">
                 </th>
-                <th style="margin-top: -10px;">
-                    <b style="font-size: 12px; margin-left: 75px;">PESO, UNIPESSOAL. LDA</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">AVE JACINTO CANDIDO, BIDAU ACADIRUHUN, DILI - TIMOR LESTE</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">MOBILE : (+670) 77584549</b><br>
-                    <b style="font-size: 12px; margin-left: 75px;">EMAIL : sales.artesgrafica@gmail.com</b><br>
+                <th width="545px" style="margin-top: -10px;">
+                    <ul type="none" style="margin-top: -2px; margin-left: 10px; font-family: Lucida Console, Courier, monospace;">
+                        <li><b style="font-size: 14px;">PESO, UNIPESSOAL. LDA</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">RUA DE NU'U LARAN, NO. 17, BAIRRO DOS GRILLOS, DILI, TIMOR-LESTE</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">MOBILE : (+670) 7758 4549 / 7372 7373</b></li>
+                        <li><b style="font-size: 14px; margin-top: -120px;">EMAIL : sales.artesgrafica@gmail.com</b></li>
+                    </ul>
                 </th>
             </thead>
         </table>
-        <hr style="border: 1px solid black; ">
+        <hr style="border: 2px; border-color:black;">
         <table>
             <tr>
                 <td  width="500px"><b style="font-size: 24px; margin-left: 37px;">JOB ORDER (Production)</b><br></td>
@@ -162,7 +164,7 @@
                     <b style="font-size: 14px;">:</b>
                 </td>
                 <td width="80px" style="padding: 2px; border-bottom: 1px solid black; font-size: 14px;">
-                    {{ $job_orders->created_at->toFormattedDateString() }}
+                    {{ showDate($job_orders->tanggal, 'd F Y') }}
                 </td>
                 <td width="2px" style="padding: 2px;">
                     <b style="font-size: 14px;">Times</b>
