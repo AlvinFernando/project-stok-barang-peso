@@ -43,13 +43,36 @@
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Qty</th>
                     <th style="padding-left: 5px; text-align: center; border: 1px solid black;">Unit</th>
                 </tr>
-                @foreach ($delivery_order_barangs as $v => $dob)
+                {{-- @foreach ($delivery_order_barangs as $v => $dob)
                     <tr class="trrx" style="font-size: 12px;" height="2px" border="1">
                         <td style="padding-left: 5px;" colspan="2">{{ $dob->description }}</td>
                         <td class="trrx" style="padding-left: 5px; text-align: center;">{{ $dob->qty }}</td>
                         <td style="padding-left: 5px; text-align: center;">{{ $dob->unit }}</td>
                     </tr>
-                @endforeach
+                @endforeach --}}
+                    <tr class="trrx" style="font-size: 12px;" height="2px" border="1">
+                        <td style="padding-left: 5px;" colspan="2">
+                            <ul type="none" style="margin-top: 3px;">
+                                @foreach ($delivery_order_barangs as $v => $dob)
+                                    <li style="margin-top: -7px;">{{ $dob->description }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td class="trrx" style="padding-left: 5px; text-align: center;">
+                            <ul type="none" style="margin-top: 3px;">
+                                @foreach ($delivery_order_barangs as $v => $dob)
+                                    <li style="margin-top: -7px;">{{ $dob->qty }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td style="padding-left: 5px; text-align: center;">
+                            <ul type="none" style="margin-top: 3px;">
+                                @foreach ($delivery_order_barangs as $v => $dob)
+                                    <li style="margin-top: -7px;">{{ $dob->unit }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
                     <tr class="trrx">
                         <td style="padding-left: 5px; " height="80px" colspan="2"></td>
                         <td class="trrx" style="padding-left: 5px; text-align: center;"></td>

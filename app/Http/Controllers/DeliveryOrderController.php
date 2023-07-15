@@ -36,8 +36,48 @@ class DeliveryOrderController extends Controller
         //
         $judul = array('title' => 'Delivery Order');
         $title = "PESO Printing | Tambah DO";
+        $awal = "DO";
         $pegawais = Pegawai::all();
-        return view('deliveryorder.create', compact('judul', 'pegawais', 'title'));
+        
+
+        //romawi berdasarkan bulan
+        function convertToRoman($number){
+            $map = [
+                'M'  => 1000,
+                'CM' => 900,
+                'D'  => 500,
+                'CD' => 400,
+                'C'  => 100,
+                'XC' => 90,
+                'L'  => 50,
+                'XL' => 40,
+                'X'  => 10,
+                'IX' => 9,
+                'V'  => 5,
+                'IV' => 4,
+                'I'  => 1
+            ];
+
+            $roman = '';
+            foreach ($map as $romanNumeral => $arabicNumeral) {
+                while ($number >= $arabicNumeral) {
+                    $roman .= $romanNumeral;
+                    $number -= $arabicNumeral;
+                }
+            }
+
+            return $roman;
+        }
+
+        $month = date('n'); // Mengambil nomor bulan saat ini
+        $romanMonth = convertToRoman($month);
+
+        $noUrutAkhir = DeliveryOrder::max('id');
+        if (date('d')=='01'){ $ax = '001'; }
+        else{ $ax = sprintf("%03s", $noUrutAkhir + 1); };
+        $nomordo = $awal . '/'. $ax . '/'. 'AG' . '/' . $romanMonth .'/' . date('Y');
+
+        return view('deliveryorder.create', compact('judul', 'pegawais', 'title', 'currentYear', 'month', 'romanMonth', 'awal', 'noUrutAkhir', 'nomordo', 'ax'));
     }
 
     /**

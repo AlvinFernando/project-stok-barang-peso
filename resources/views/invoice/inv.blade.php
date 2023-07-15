@@ -45,17 +45,54 @@
                     <th style="padding-left: 5px; border: 1px solid black;">Unit Price</th>
                     <th style="padding-left: 5px; border: 1px solid black;">Price USD</th>
                 </tr>
-                @foreach ($invoices_barangs as $v => $ivb)
+                {{-- @foreach ($invoices_barangs as $v => $ivb)
                     <tr class="trrx">
                         <td style="padding-left: 5px;" colspan="2">{{ $ivb->description }}</td>
                         <td class="trrx" style="padding-left: 5px; text-align: center;">{{ $ivb->qty }}</td>
                         <td style="padding-left: 5px; text-align: center;">{{ $ivb->unit }}</td>
-                        <td class="trrx" style="padding-left: 5px; text-align: center;">$ {{ number_format($ivb->harga, 2, '.', '') }}</td>
-                        <td style="padding-left: 5px; text-align: center;">$ {{ number_format($ivb->jumlah, 2, '.', '') }}</td>
+                        <td class="trrx" style="padding-left: 5px; text-align: center;">$ {{ number_format($ivb->harga, 2, '.', ',') }}</td>
+                        <td style="padding-left: 5px; text-align: center;">$ {{ number_format($ivb->jumlah, 2, '.', ',') }}</td>
                     </tr>
-                @endforeach
+                @endforeach --}}
                 <tr class="trrx">
-                    <td style="padding-left: 5px; " height="100px" colspan="2"></td>
+                    <td style="padding-left: 5px;" colspan="2">
+                        <ul type="none" style="margin-top: 3px;">
+                            @foreach($invoices_barangs as $item)
+                                <li style="margin-top: -7px;">{{ $item->description }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td class="trrx" style="padding-left: 5px; text-align: center;">
+                        <ul type="none" style="margin-top: 3px;">
+                            @foreach($invoices_barangs as $item)
+                                <li style="margin-top: -7px;">{{ $item->qty }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td style="padding-left: 5px; text-align: center;">
+                        <ul type="none" style="margin-top: 3px;">
+                            @foreach($invoices_barangs as $item)
+                                <li style="margin-top: -7px;">{{ $item->unit }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td class="trrx" style="padding-right: 5px; text-align: right;">
+                        <ul type="none" style="margin-top: 3px;">
+                            @foreach($invoices_barangs as $item)
+                                <li style="margin-top: -7px;">$ {{ number_format($item->harga, 2, '.', ',') }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td style="padding-right: 5px; text-align: right;">
+                        <ul type="none" style="margin-top: 3px;">
+                            @foreach($invoices_barangs as $item)
+                                <li style="margin-top: -7px;">$ {{ number_format($item->jumlah, 2, '.', ',') }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="trrx">
+                    <td style="padding-left: 5px; " height="60px" colspan="2"></td>
                     <td class="trrx" style="padding-left: 5px; text-align: center;"></td>
                     <td class="trrx" style="padding-left: 5px; text-align: center;"></td>
                     <td class="trrx" style="padding-left: 5px; text-align: center;"></td>
@@ -63,7 +100,7 @@
                 </tr>
                 <tr style="border-top: 1px solid black; text-align: center;">
                     <th colspan="5" style="padding-left: 5px; border: 1px solid black;">TOTAL</th>
-                    <td style="border: 1px solid black;">$ {{ number_format($invoices->total, 2, '.', '') }}</td>
+                    <td style="border: 1px solid black; padding-right: 5px; text-align: right;">$ {{ number_format($invoices->total, 2, '.', ',') }}</td>
                 </tr>
             </tbody>
         </table>

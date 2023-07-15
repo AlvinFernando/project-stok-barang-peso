@@ -6,10 +6,13 @@ use App\Invoice;
 use App\InvoiceBarang;
 use App\Pegawai;
 use PDF;
+use Carbon\Carbon;
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +37,53 @@ class InvoiceController extends Controller
     {
         //
         $judul = array('title' => 'Invoice');
+        $awal = "INV";
         $title = "Tambah Invoices";
+        
+
         $pegawais = Pegawai::all();
-        return view('invoice.create', compact('judul', 'title', 'pegawais'));
+
+        //romawi berdasarkan bulan
+        function convertToRoman($number){
+            $map = [
+                'M'  => 1000,
+                'CM' => 900,
+                'D'  => 500,
+                'CD' => 400,
+                'C'  => 100,
+                'XC' => 90,
+                'L'  => 50,
+                'XL' => 40,
+                'X'  => 10,
+                'IX' => 9,
+                'V'  => 5,
+                'IV' => 4,
+                'I'  => 1
+            ];
+
+            $roman = '';
+            foreach ($map as $romanNumeral => $arabicNumeral) {
+                while ($number >= $arabicNumeral) {
+                    $roman .= $romanNumeral;
+                    $number -= $arabicNumeral;
+                }
+            }
+
+            return $roman;
+        }
+
+        $month = date('n'); // Mengambil nomor bulan saat ini
+        $romanMonth = convertToRoman($month);
+        // $romanMonth = convertToRoman($month);
+        //--romawi berdasarkan bulan--
+
+        $noUrutAkhir = Invoice::max('id');
+        if (date('d')=='01'){ $ax = '001'; }
+        else{ $ax = sprintf("%03s", $noUrutAkhir + 1); };
+
+        $nomorinv = $awal . '/'. $ax . '/'. 'AG' . '/' . $romanMonth .'/' . date('Y');
+
+        return view('invoice.create', compact('judul', 'title', 'pegawais', 'nomorinv', 'month', 'romanMonth', 'awal', 'noUrutAkhir', 'ax'));
     }
 
     /**
@@ -49,6 +96,7 @@ class InvoiceController extends Controller
     {
         //
         //dd($request->all());
+
         $invoices = Invoice::create([
             'no_inv' => $request->no_inv,
             'pegawais_id' => $request->pegawais_id,
@@ -74,7 +122,7 @@ class InvoiceController extends Controller
         //             InvoiceBarang::create($datas2);
         // }
 
-        if(count($request->description) > 1){
+        if(count($request->description) >= 1){
              foreach($request->description as $item => $value){
                  $datas2 = array(
                      'invoices_id' => $invoices->id,

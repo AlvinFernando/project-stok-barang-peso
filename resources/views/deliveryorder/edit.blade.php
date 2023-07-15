@@ -36,7 +36,7 @@
                                         <div class="form-group">
                                             <label for="no_do">No. Delivery Order</label>
                                             <input type="text" class="form-control"
-                                            name="no_do" value="{{ $delivery_orders->no_do }}">
+                                            name="no_do" value="{{ $delivery_orders->no_do }}" readonly>
                                         </div>
                                     </div>
                                 </div>

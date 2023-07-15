@@ -64,7 +64,7 @@
                                                     <tr>
                                                         <td>{{ $result + $delivery_order->firstItem() }}</td>
                                                         <td>{{ $dlvorders->no_do }}</td>
-                                                        <td>{{ $dlvorders->tanggal }}</td>
+                                                        <td>{{ showDate($dlvorders->tanggal, 'd F Y') }}</td>
                                                         <td>{{ $dlvorders->nama }}</td>
                                                         <td class="text-center">
                                                             <form action="{{ route('deliveryorder.destroy', $dlvorders->id )}}" method="POST">

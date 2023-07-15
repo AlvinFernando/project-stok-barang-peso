@@ -34,7 +34,12 @@ class JobOrderController extends Controller
         $judul = array('title' => 'Job Order');
         $title = "Tambah Job Orders";
         $pegawai = Pegawai::all();
-        return view('joborder.create', compact('judul', 'pegawai', 'title'));
+
+        $noUrutAkhir = JobOrder::max('id');
+        if (date('n')=='01'){ $ax = '000001'; }
+        else{ $ax = sprintf("%06s", $noUrutAkhir + 1); };
+        $nomorjo = $ax;
+        return view('joborder.create', compact('judul', 'pegawai', 'title', 'noUrutAkhir', 'ax', 'nomorjo'));
     }
 
     /**

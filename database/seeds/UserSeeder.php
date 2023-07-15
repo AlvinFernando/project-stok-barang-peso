@@ -35,7 +35,14 @@ class UserSeeder extends Seeder
                 'level' => 'pegawai',
                 'email'    => 'pegawai@peso.co.id',
                 'remember_token' => Str::random(60),
-                'password'    => bcrypt('kepsek1234')
+                'password'    => bcrypt('pegawai1234')
+            ],
+            [
+                'name'    => 'Fina',
+                'level' => 'pegawai',
+                'email'    => 'fina@peso.co.id',
+                'remember_token' => Str::random(60),
+                'password'    => bcrypt('fina1234')
             ],
         ];
 

@@ -35,7 +35,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="no_jo">No. JO</label>
-                                            <input type="text" name="no_jo" id="no_jo" class="form-control">
+                                            <input type="text" name="no_jo" id="no_jo" value="{{ $nomorjo }}" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

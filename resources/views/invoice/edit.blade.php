@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0 text-bold">INPUT INVOICES</h1>
+                    <h1 class="m-0 text-bold">EDIT INVOICES</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -36,7 +36,10 @@
                                         <div class="form-group">
                                             <label for="no_inv">No. Invoice</label>
                                             <input type="text" class="form-control"
-                                            name="no_inv" value="{{ $invoices->no_inv }}">
+                                            name="no_inv" value="{{ $invoices->no_inv }}" 
+                                            @if (Auth::user()->level == 'pegawai')
+                                                readonly
+                                            @endif>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="tanggal">Tanggal</label>
                                             <input type="text" class="form-control"
-                                            name="tanggal" value="{{ $invoices->tanggal }}">
+                                            name="tanggal" value="{{ showDate($invoices->tanggal, 'd F Y')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">

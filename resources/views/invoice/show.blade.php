@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0 text-bold">DETAIL DELIVERY ORDER</h1>
+                    <h1 class="m-0 text-bold">DETAIL INVOICE</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">DETAIL DELIVERY ORDER</h3>
+                            <h3 class="card-title">DETAIL INVOICE</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -46,7 +46,7 @@
 
                                             <br>
                                             <!-- Table row -->
-                                            
+
                                             <div class="row">
                                                 <div class="col-12 table-responsive">
                                                     <table class="table table-striped">
@@ -65,15 +65,15 @@
                                                                     <td>{{ $invoics->description }}</td>
                                                                     <td>{{ $invoics->qty }}</td>
                                                                     <td>{{ $invoics->unit }}</td>
-                                                                    <td>$ {{ number_format($invoics->harga, 2, '.', '') }}</td>
-                                                                    <td>$ {{ number_format($invoics->jumlah, 2, '.', '') }}</td>
+                                                                    <td>$ {{ number_format($invoics->harga, 2, '.', ',') }}</td>
+                                                                    <td>$ {{ number_format($invoics->jumlah, 2, '.', ',') }}</td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>
                                                         <tbody>
                                                                 <tr>
                                                                     <td colspan="4">TOTAL</td>
-                                                                    <td>$ {{ number_format($invoices->total, 2, '.', '') }} </td>
+                                                                    <td>$ {{ number_format($invoices->total, 2, '.', ',') }} </td>
                                                                 </tr>
                                                         </tbody>
                                                     </table>

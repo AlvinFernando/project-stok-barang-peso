@@ -35,7 +35,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             {{ Form::label('no_inv', 'No Invoice', ['class' => 'control-label'], false) }}
-                                            {{ Form::text('no_inv', '', array('class'=>'form-control')) }}
+                                            <input type="text" name="no_inv" class="form-control" value="{{ $nomorinv }}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -121,10 +121,10 @@
                                                         </select>
                                                     </td>
                                                     <td width="110px">
-                                                        <input type="number" class="form-control" id="harga1" onchange="Sums(this)" name="harga[]" min="1" step="any">
+                                                        <input type="number" class="form-control" id="harga1" onchange="Sums(this)" name="harga[]" min="0" step="any">
                                                     </td>
                                                     <td width="110px">
-                                                        <input type="number" class="form-control" id="jumlah1" name="jumlah[]" value="0" min="1" step="any" readonly>
+                                                        <input type="number" class="form-control" id="jumlah1" name="jumlah[]" value="0" min="0" step="any" readonly>
                                                     </td>
                                                     <td width="1px">
                                                         <a href="javascript:" class="addinvoices float-right btn btn-primary btn-sm" style="margin-bottom: 10px;">

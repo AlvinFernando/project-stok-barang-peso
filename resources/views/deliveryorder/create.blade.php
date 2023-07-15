@@ -35,7 +35,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             {{ Form::label('no_do', 'Nomor DO ', ['class' => 'control-label'], false) }}
-                                            {{ Form::text('no_do', '', array('class'=>'form-control')) }}
+                                            {{-- {{ Form::text('no_do', '', array('class'=>'form-control')) }} --}}
+                                            <input type="text" name="no_do" class="form-control" value="{{ $nomordo }}" readonly>
                                         </div>
                                     </div>
                                 </div>

@@ -76,7 +76,7 @@
                                                 @forelse($job_orders as $result => $jborders)
                                                     <tr>
                                                         <td>{{ $result + $job_orders->firstItem() }}</td>
-                                                        <td>{{ $jborders->tanggal }}</td>
+                                                        <td>{{ showDate($jborders->tanggal, 'd F Y') }}</td>
                                                         <td>{{ $jborders->customer }}</td>
                                                         <td>{{ $jborders->jenis_order }}</td>
                                                         <td class="text-center">
